@@ -31,9 +31,8 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Start fetching the hero film before anything else -->
-    <link rel="preload" as="image" href="video/hero-desktop-poster.jpg" media="(min-aspect-ratio: 1/1)">
-    <link rel="preload" as="image" href="video/hero-mobile-poster.jpg" media="(max-aspect-ratio: 1/1)">
+    <!-- Start fetching the first film poster before anything else -->
+    <link rel="preload" as="image" href="video/card-coffee.jpg">
 
     <style>
         :root {
@@ -521,62 +520,39 @@
             gap: 6px;
         }
 
-        /* ---------- Hero ---------- */
+        /* ---------- Hero: gallery with rotating films ---------- */
         .hero {
             position: relative;
-            height: 100vh;
-            height: 100svh;
-            min-height: 600px;
+            min-height: 100vh;
+            min-height: 100svh;
             overflow: hidden;
-            background: var(--forest);
             color: #fff;
             display: flex;
-            align-items: flex-end;
-        }
-
-        .hero__media {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-        }
-
-        .hero__poster,
-        .hero__video {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: scale(1.08);
-            transition: transform 2.8s var(--ease-out), opacity 1.6s ease;
-        }
-
-        .hero__video {
-            opacity: 0;
-        }
-
-        .hero.is-live .hero__video {
-            opacity: 1;
-        }
-
-        .hero.is-revealed .hero__poster,
-        .hero.is-revealed .hero__video {
-            transform: scale(1);
-        }
-
-        .hero__shade {
-            position: absolute;
-            inset: 0;
+            flex-direction: column;
             background:
-                linear-gradient(180deg, rgba(10, 22, 14, .55) 0%, rgba(10, 22, 14, 0) 26%),
-                linear-gradient(0deg, rgba(10, 22, 14, .88) 0%, rgba(10, 22, 14, .35) 45%, rgba(10, 22, 14, .15) 70%),
-                radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, .35) 100%);
+                radial-gradient(ellipse 60% 70% at 72% 18%, rgba(227, 201, 139, .16) 0%, rgba(227, 201, 139, 0) 60%),
+                radial-gradient(ellipse 80% 60% at 20% 0%, rgba(46, 125, 50, .22) 0%, rgba(46, 125, 50, 0) 65%),
+                linear-gradient(180deg, #0f2016 0%, #13281b 55%, #0d1c13 74%, #0c1a12 100%);
+        }
+
+        /* gallery floor */
+        .hero::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 42%;
+            background:
+                radial-gradient(ellipse 55% 60% at 72% 0%, rgba(227, 201, 139, .10) 0%, rgba(227, 201, 139, 0) 70%),
+                linear-gradient(180deg, rgba(0, 0, 0, .35) 0%, rgba(0, 0, 0, 0) 30%);
+            pointer-events: none;
         }
 
         .hero__grain {
             position: absolute;
             inset: -50%;
-            opacity: .09;
+            opacity: .07;
             pointer-events: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
             animation: grain 1.2s steps(6) infinite;
@@ -611,8 +587,17 @@
         .hero__content {
             position: relative;
             z-index: 2;
-            width: 100%;
-            padding-bottom: clamp(110px, 16vh, 150px);
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 110px 0 90px;
+        }
+
+        .hero__grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+            gap: clamp(24px, 4vw, 64px);
+            align-items: center;
         }
 
         .hero__sub {
@@ -620,10 +605,9 @@
         }
 
         .hero__title {
-            font-size: clamp(52px, 10vw, 136px);
+            font-size: clamp(50px, 6.4vw, 104px);
             margin: 22px 0 26px;
             color: #fff;
-            max-width: 11ch;
         }
 
         .hero__title .w {
@@ -643,20 +627,12 @@
             transform: none;
         }
 
-        .hero__row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 28px 48px;
-        }
-
         .hero__desc {
-            max-width: 520px;
-            font-size: clamp(15px, 1.3vw, 17px);
+            max-width: 480px;
+            font-size: clamp(15px, 1.2vw, 17px);
             font-weight: 300;
-            color: rgba(255, 255, 255, .86);
-            margin: 0;
+            color: rgba(255, 255, 255, .8);
+            margin: 0 0 34px;
         }
 
         .hero__actions {
@@ -676,13 +652,214 @@
             transform: none;
         }
 
-        .hero__foot {
+        /* --- the showcase --- */
+        .showcase {
+            position: relative;
+            height: clamp(470px, 66vh, 640px);
+            perspective: 1600px;
+        }
+
+        /* spotlight from the ceiling onto the front film */
+        .showcase__light {
             position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            left: 50%;
+            top: -60px;
+            width: 560px;
+            height: 112%;
+            transform: translateX(-50%);
+            background: radial-gradient(ellipse 50% 60% at 50% 0%, rgba(255, 240, 205, .20) 0%, rgba(255, 240, 205, .07) 45%, rgba(255, 240, 205, 0) 75%);
+            filter: blur(10px);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 2s ease .6s;
+        }
+
+        .hero.is-revealed .showcase__light {
+            opacity: 1;
+        }
+
+        /* soft shadow pooled on the floor */
+        .showcase__floor {
+            position: absolute;
+            left: 50%;
+            bottom: 2%;
+            width: 78%;
+            height: 60px;
+            transform: translateX(-50%);
+            background: radial-gradient(ellipse at center, rgba(0, 0, 0, .65) 0%, rgba(0, 0, 0, 0) 70%);
+            filter: blur(6px);
+            pointer-events: none;
+        }
+
+        .film {
+            --w: clamp(220px, 19vw, 300px);
+            position: absolute;
+            left: 50%;
+            top: 4%;
+            width: var(--w);
+            aspect-ratio: 9/16;
+            margin-left: calc(var(--w) / -2);
+            border-radius: 26px;
+            overflow: hidden;
+            background: #0b170f;
+            box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .8), 0 0 0 1px rgba(255, 255, 255, .08);
+            transition: transform 1.2s var(--ease-out), opacity 1.2s var(--ease-out), filter 1.2s var(--ease-out);
+            cursor: pointer;
+            -webkit-box-reflect: below 16px linear-gradient(to bottom, transparent 0%, transparent 72%, rgba(255, 255, 255, .22) 100%);
+            will-change: transform;
+        }
+
+        .film video,
+        .film img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .film::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(10, 22, 14, .55) 0%, rgba(10, 22, 14, 0) 38%);
+            pointer-events: none;
+        }
+
+        .film[data-pos="front"] {
+            transform: translateX(0) scale(1);
+            z-index: 3;
+            opacity: 1;
+            filter: none;
+            cursor: default;
+        }
+
+        .film[data-pos="right"] {
+            transform: translateX(62%) scale(.8) rotateY(-16deg);
             z-index: 2;
-            border-top: 1px solid rgba(255, 255, 255, .16);
+            opacity: .62;
+            filter: brightness(.55) saturate(.8);
+        }
+
+        .film[data-pos="left"] {
+            transform: translateX(-62%) scale(.8) rotateY(16deg);
+            z-index: 2;
+            opacity: .62;
+            filter: brightness(.55) saturate(.8);
+        }
+
+        .film[data-pos="back"] {
+            transform: translateX(0) scale(.6);
+            z-index: 1;
+            opacity: 0;
+        }
+
+        .film__label {
+            position: absolute;
+            left: 14px;
+            right: 14px;
+            bottom: 14px;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity .6s ease .5s, transform .6s var(--ease-out) .5s;
+        }
+
+        .film[data-pos="front"] .film__label {
+            opacity: 1;
+            transform: none;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, .92);
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 500;
+            padding: 10px 16px;
+            border-radius: 999px;
+            box-shadow: 0 10px 24px -12px rgba(0, 0, 0, .5);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .plus {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .92);
+            color: var(--ink);
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            font-weight: 300;
+            line-height: 1;
+            box-shadow: 0 10px 24px -12px rgba(0, 0, 0, .5);
+            transition: transform .4s var(--ease), background .4s var(--ease);
+        }
+
+        .plus:hover {
+            transform: rotate(90deg);
+            background: var(--gold);
+        }
+
+        .showcase__dots {
+            position: absolute;
+            left: 50%;
+            bottom: -6px;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 4;
+        }
+
+        .dot {
+            width: 34px;
+            height: 3px;
+            border: 0;
+            padding: 0;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, .2);
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .dot::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+        .dot.is-active::after {
+            animation: dotFill var(--dur, 6s) linear forwards;
+        }
+
+        .is-paused .dot.is-active::after {
+            animation-play-state: paused;
+        }
+
+        @keyframes dotFill {
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        .hero__foot {
+            position: relative;
+            z-index: 2;
+            border-top: 1px solid rgba(255, 255, 255, .12);
         }
 
         .hero__foot .wrap {
@@ -842,38 +1019,215 @@
             transition-delay: .36s;
         }
 
-        /* Story */
+        /* Story: floating books + numbered reasons */
         .story__grid {
             display: grid;
-            grid-template-columns: 1.05fr .95fr;
-            gap: clamp(48px, 7vw, 110px);
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(40px, 6vw, 96px);
             align-items: center;
         }
 
-        .story__title {
-            font-size: clamp(40px, 5vw, 68px);
-            margin: 22px 0 34px;
+        .books {
+            position: relative;
+            height: clamp(440px, 46vw, 600px);
+            perspective: 1800px;
         }
 
-        .story__body p {
-            color: var(--muted);
-            font-size: 16.5px;
-            font-weight: 300;
-            margin: 0 0 20px;
+        .books__shadow {
+            position: absolute;
+            left: 12%;
+            right: 6%;
+            bottom: 8%;
+            height: 50px;
+            background: radial-gradient(ellipse at center, rgba(18, 38, 26, .28) 0%, rgba(18, 38, 26, 0) 70%);
+            filter: blur(4px);
+            animation: shadowBreath 7s ease-in-out infinite;
         }
 
-        .story__quote {
-            margin: 38px 0 30px;
-            padding: 0 0 0 26px;
-            border-left: 1px solid var(--gold);
+        .book-wrap {
+            position: absolute;
+            transform-style: preserve-3d;
+            animation: floaty 7s ease-in-out infinite;
+        }
+
+        .book-wrap--back {
+            left: 2%;
+            top: 20%;
+            animation-delay: -3.5s;
+            z-index: 1;
+        }
+
+        .book-wrap--front {
+            left: 36%;
+            top: 4%;
+            z-index: 2;
+        }
+
+        .book {
+            --bw: clamp(170px, 17vw, 240px);
+            --bh: calc(var(--bw) * 1.413);
+            --bt: 30px;
+            position: relative;
+            width: var(--bw);
+            height: var(--bh);
+            transform-style: preserve-3d;
+            transition: transform 1.2s var(--ease-out);
+        }
+
+        .book-wrap--back .book {
+            transform: rotateZ(-9deg) rotateY(38deg) rotateX(6deg);
+        }
+
+        .book-wrap--front .book {
+            transform: rotateZ(4deg) rotateY(-26deg) rotateX(4deg);
+        }
+
+        .book-wrap--back:hover .book {
+            transform: rotateZ(-6deg) rotateY(24deg) rotateX(4deg);
+        }
+
+        .book-wrap--front:hover .book {
+            transform: rotateZ(2deg) rotateY(-14deg) rotateX(2deg);
+        }
+
+        .book__face {
+            position: absolute;
+            inset: 0;
+        }
+
+        .book__front {
+            transform: translateZ(calc(var(--bt) / 2));
+            border-radius: 2px 6px 6px 2px;
+            overflow: hidden;
+            box-shadow: inset 4px 0 10px rgba(0, 0, 0, .18);
+        }
+
+        .book__front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* subtle hinge crease + sheen */
+        .book__front::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(0, 0, 0, .22) 0, rgba(255, 255, 255, .18) 2.5%, rgba(0, 0, 0, .08) 5%, rgba(0, 0, 0, 0) 9%),
+                linear-gradient(115deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, .16) 50%, rgba(255, 255, 255, 0) 60%);
+        }
+
+        .book__back {
+            transform: translateZ(calc(var(--bt) / -2));
+            background: var(--forest);
+            border-radius: 6px 2px 2px 6px;
+            box-shadow: -18px 30px 50px -10px rgba(18, 38, 26, .35);
+        }
+
+        .book__spine {
+            width: var(--bt);
+            transform: translateX(calc(var(--bt) / -2)) rotateY(-90deg);
+            background: linear-gradient(90deg, #0d1d13, #1d3a27 45%, #0d1d13);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .book__spine span {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
             font-family: var(--serif);
-            font-size: clamp(24px, 2.4vw, 31px);
-            line-height: 1.3;
-            font-style: italic;
+            font-size: 13px;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--gold-soft);
+            white-space: nowrap;
+        }
+
+        .book__pages {
+            left: auto;
+            width: calc(var(--bt) - 4px);
+            top: 3px;
+            bottom: 3px;
+            right: 0;
+            transform: translateX(calc(var(--bt) / 2 - 2px)) rotateY(90deg);
+            background: repeating-linear-gradient(90deg, #fffdf8 0, #fffdf8 2px, #e9e3d6 3px, #fffdf8 4px);
+        }
+
+        @keyframes floaty {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-16px);
+            }
+        }
+
+        @keyframes shadowBreath {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scaleX(1);
+            }
+
+            50% {
+                opacity: .7;
+                transform: scaleX(.94);
+            }
+        }
+
+        .story__title {
+            font-size: clamp(38px, 4.4vw, 60px);
+            margin: 22px 0 36px;
+        }
+
+        .reasons {
+            list-style: none;
+            margin: 0 0 36px;
+            padding: 0;
+            display: grid;
+            gap: 30px;
+        }
+
+        .reasons h3 {
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: clamp(22px, 2vw, 27px);
+            line-height: 1.2;
+            margin: 0 0 10px;
             color: var(--ink);
         }
 
-        .story__quote span {
+        .reasons h3 b {
+            font-style: italic;
+            font-weight: 500;
+            color: var(--gold);
+            margin-right: 8px;
+            font-size: .85em;
+        }
+
+        .reasons p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 15.5px;
+            font-weight: 300;
+        }
+
+        .reasons .quote {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: clamp(21px, 1.9vw, 25px);
+            line-height: 1.35;
+            color: var(--ink);
+            font-weight: 400;
+        }
+
+        .reasons .quote span {
             background: linear-gradient(transparent 62%, rgba(201, 162, 78, .35) 62%);
             font-style: normal;
             font-weight: 500;
@@ -881,84 +1235,25 @@
             padding: 0 2px;
         }
 
+        .story__foot {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px 32px;
+        }
+
         .story__sign {
             font-size: 14px;
             color: var(--muted);
-            margin: 0 0 34px;
+            margin: 0;
+            line-height: 1.4;
         }
 
-        .story__sign span {
+        .story__sign span:last-child {
             font-family: var(--serif);
             font-size: 22px;
             font-style: italic;
             color: var(--green);
-        }
-
-        .story__visual {
-            position: relative;
-        }
-
-        .story__frame {
-            position: relative;
-            border-radius: 6px;
-            overflow: hidden;
-            aspect-ratio: 906/1280;
-            box-shadow: 0 40px 80px -40px rgba(18, 38, 26, .45);
-        }
-
-        .story__frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: scale(1.06);
-            transition: transform 1.8s var(--ease-out);
-        }
-
-        .story__visual.is-in .story__frame img {
-            transform: scale(1);
-        }
-
-        .story__badge {
-            position: absolute;
-            left: -28px;
-            bottom: 48px;
-            background: var(--paper);
-            padding: 20px 24px;
-            border-radius: 6px;
-            box-shadow: 0 24px 50px -24px rgba(18, 38, 26, .35);
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            max-width: 280px;
-        }
-
-        .story__badge i {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--forest);
-            color: var(--gold-soft);
-            display: grid;
-            place-items: center;
-            flex-shrink: 0;
-        }
-
-        .story__badge strong {
-            display: block;
-            font-family: var(--serif);
-            font-size: 20px;
-            font-weight: 600;
-            line-height: 1.1;
-        }
-
-        .story__badge small {
-            font-size: 12px;
-            color: var(--muted);
-        }
-
-        /* Products */
-        .products {
-            background: var(--cream);
         }
 
         .section-head {
@@ -982,105 +1277,163 @@
             margin: 0;
         }
 
-        .products__grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 22px;
-        }
-
-        .product {
-            position: relative;
-            display: block;
-            border-radius: 4px;
+        /* Products: rotating card deck */
+        .products {
+            background: #ecede2;
             overflow: hidden;
-            aspect-ratio: 3/4.4;
-            background: var(--forest);
-            color: #fff;
-            isolation: isolate;
         }
 
-        .product img {
+        .deck {
+            position: relative;
+            height: clamp(440px, 46vw, 600px);
+            perspective: 1600px;
+        }
+
+        .deck__card {
+            --cw: clamp(250px, 30vw, 400px);
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: var(--cw);
+            aspect-ratio: 4/5;
+            margin-left: calc(var(--cw) / -2);
+            border-radius: 30px;
+            overflow: hidden;
+            display: block;
+            background: #fffaf0;
+            box-shadow: 0 40px 70px -40px rgba(18, 38, 26, .45);
+            transition: transform 1.1s var(--ease-out), opacity 1.1s var(--ease-out), filter 1.1s var(--ease-out);
+        }
+
+        .deck__card img {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 1.4s var(--ease-out);
-            z-index: -2;
+            transition: transform 1.6s var(--ease-out);
         }
 
-        .product::after {
+        .deck__card::after {
             content: '';
             position: absolute;
             inset: 0;
-            z-index: -1;
-            background: linear-gradient(0deg, rgba(10, 22, 14, .9) 0%, rgba(10, 22, 14, .2) 50%, rgba(10, 22, 14, .05) 100%);
-            transition: background .6s var(--ease);
+            background: linear-gradient(0deg, rgba(10, 22, 14, .35) 0%, rgba(10, 22, 14, 0) 35%);
+            pointer-events: none;
         }
 
-        .product:hover img {
-            transform: scale(1.07);
+        .deck__card[data-pos="front"] {
+            transform: translateX(0) scale(1);
+            z-index: 4;
+            opacity: 1;
         }
 
-        .product:hover::after {
-            background: linear-gradient(0deg, rgba(10, 22, 14, .95) 0%, rgba(10, 22, 14, .45) 60%, rgba(10, 22, 14, .2) 100%);
+        .deck__card[data-pos="front"]:hover img {
+            transform: scale(1.05);
         }
 
-        .product__index {
+        .deck__card[data-pos="right"] {
+            transform: translateX(72%) scale(.78);
+            z-index: 3;
+            opacity: .85;
+            filter: blur(1.5px) saturate(.85);
+            cursor: pointer;
+        }
+
+        .deck__card[data-pos="left"] {
+            transform: translateX(-72%) scale(.78);
+            z-index: 3;
+            opacity: .85;
+            filter: blur(1.5px) saturate(.85);
+            cursor: pointer;
+        }
+
+        .deck__card[data-pos="back"] {
+            transform: translateX(0) scale(.6);
+            z-index: 1;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .deck__card .film__label {
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+        }
+
+        .deck__card[data-pos="front"] .film__label {
+            opacity: 1;
+            transform: none;
+        }
+
+        .deck__card .pill {
+            font-size: 13px;
+            padding: 12px 20px;
+        }
+
+        .deck__card .plus {
+            width: 48px;
+            height: 48px;
+        }
+
+        .deck__index {
             position: absolute;
             top: 22px;
             left: 24px;
+            z-index: 2;
             font-family: var(--serif);
-            font-size: 18px;
             font-style: italic;
-            color: var(--gold-soft);
+            font-size: 18px;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, .4);
         }
 
-        .product__origin {
-            position: absolute;
-            top: 24px;
-            right: 22px;
-            font-size: 10px;
-            letter-spacing: .22em;
-            text-transform: uppercase;
-            padding: 6px 10px;
-            border: 1px solid rgba(255, 255, 255, .35);
-            border-radius: 999px;
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-        }
-
-        .product__body {
-            position: absolute;
-            left: 24px;
-            right: 24px;
-            bottom: 24px;
-        }
-
-        .product__body h3 {
-            font-family: var(--serif);
-            font-weight: 500;
-            font-size: clamp(25px, 2.1vw, 30px);
-            line-height: 1.1;
-            margin: 0 0 14px;
-        }
-
-        .product__more {
-            display: inline-flex;
+        .deck__nav {
+            display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 12px;
-            letter-spacing: .16em;
-            text-transform: uppercase;
-            color: var(--gold-soft);
+            justify-content: center;
+            gap: 18px;
+            margin-top: 34px;
         }
 
-        .product__more i {
-            transition: transform .5s var(--ease);
+        .deck__arrow {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            background: transparent;
+            color: var(--ink);
+            cursor: pointer;
+            font-size: 18px;
+            display: grid;
+            place-items: center;
+            transition: background .4s var(--ease), color .4s var(--ease);
         }
 
-        .product:hover .product__more i {
-            transform: translateX(6px);
+        .deck__arrow:hover {
+            background: var(--forest);
+            color: var(--cream);
+        }
+
+        .deck__dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .deck__dots .dot {
+            background: rgba(29, 27, 23, .14);
+        }
+
+        .deck__dots .dot::after {
+            background: var(--forest);
+        }
+
+        .deck__caption {
+            text-align: center;
+            margin-top: 14px;
+            font-size: 13px;
+            color: var(--muted);
+            min-height: 1.6em;
         }
 
         /* Process */
@@ -1533,10 +1886,6 @@
 
         /* ---------- Responsive ---------- */
         @media (max-width: 1080px) {
-            .products__grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
             .process__grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1564,18 +1913,32 @@
                 display: flex;
             }
 
+            .hero__content {
+                padding: 108px 0 40px;
+            }
+
+            .hero__grid,
             .story__grid,
             .impact__grid,
             .cta__card {
                 grid-template-columns: 1fr;
             }
 
-            .story__visual {
-                max-width: 480px;
+            .showcase {
+                height: 520px;
+                margin-top: 10px;
             }
 
-            .story__badge {
-                left: 16px;
+            .film {
+                --w: 230px;
+                top: 0;
+            }
+
+            .books {
+                height: 440px;
+                max-width: 520px;
+                width: 100%;
+                margin: 0 auto;
             }
 
             .trust__grid {
@@ -1614,17 +1977,69 @@
                 justify-content: center;
             }
 
+            .showcase {
+                height: 470px;
+            }
+
+            .film {
+                --w: 210px;
+            }
+
+            .film[data-pos="right"] {
+                transform: translateX(52%) scale(.78) rotateY(-16deg);
+            }
+
+            .film[data-pos="left"] {
+                transform: translateX(-52%) scale(.78) rotateY(16deg);
+            }
+
+            .books {
+                height: 330px;
+            }
+
+            .book-wrap--back {
+                top: 12%;
+            }
+
+            .book-wrap--front {
+                top: 0;
+            }
+
+            .books__shadow {
+                bottom: 0;
+            }
+
+            .book {
+                --bw: 150px;
+                --bt: 22px;
+            }
+
+            .book-wrap--front {
+                left: 40%;
+            }
+
+            .deck {
+                height: 400px;
+            }
+
+            .deck__card {
+                --cw: 250px;
+            }
+
+            .deck__card[data-pos="right"] {
+                transform: translateX(46%) scale(.8);
+            }
+
+            .deck__card[data-pos="left"] {
+                transform: translateX(-46%) scale(.8);
+            }
+
             .trust__item {
                 padding: 30px 16px;
             }
 
-            .products__grid,
             .process__grid {
                 grid-template-columns: 1fr;
-            }
-
-            .product {
-                aspect-ratio: 4/4.6;
             }
 
             .step {
@@ -1759,26 +2174,16 @@
     </div>
 
     <main>
-        <!-- Hero -->
+        <!-- Hero: gallery with three rotating films -->
         <section class="hero" id="hero">
-            <div class="hero__media">
-                <picture>
-                    <source media="(max-aspect-ratio: 1/1)" srcset="video/hero-mobile-poster.jpg">
-                    <img class="hero__poster" src="video/hero-desktop-poster.jpg"
-                        alt="Indonesian green coffee beans hand-sorted at the Sajiva drying beds">
-                </picture>
-                <video class="hero__video" id="heroVideo" muted loop playsinline preload="auto"
-                    data-desktop="video/hero-desktop.mp4" data-mobile="video/hero-mobile.mp4"></video>
-                <div class="hero__shade"></div>
-                <div class="hero__grain"></div>
-            </div>
+            <div class="hero__grain" aria-hidden="true"></div>
 
             <div class="hero__content">
-                <div class="wrap">
-                    <span class="eyebrow hero__sub fade-up" style="transition-delay:.1s"
-                        data-i18n="hero_sub">Jadilah Bagian dari Perjalanan</span>
-                    <h1 class="display hero__title" id="heroTitle" data-i18n="hero_title">Murni. Sederhana. Indah.</h1>
-                    <div class="hero__row">
+                <div class="wrap hero__grid">
+                    <div class="hero__text">
+                        <span class="eyebrow hero__sub fade-up" style="transition-delay:.1s"
+                            data-i18n="hero_sub">Jadilah Bagian dari Perjalanan</span>
+                        <h1 class="display hero__title" id="heroTitle" data-i18n="hero_title">Murni. Sederhana. Indah.</h1>
                         <p class="hero__desc fade-up" style="transition-delay:.55s" data-i18n="hero_desc">Kopi, rempah,
                             minyak atsiri, dan VCO langsung dari petani nusantara — untuk importir, roastery, dan
                             produsen di seluruh dunia.</p>
@@ -1787,6 +2192,43 @@
                                     B2B</span><i class="fa-solid fa-arrow-right"></i></a>
                             <a href="#be-better" class="btn btn--ghost"><span data-i18n="hero_cta">Mulai
                                     Perjalanan</span></a>
+                        </div>
+                    </div>
+
+                    <div class="showcase fade-up" id="showcase" style="transition-delay:.35s" data-interval="6500"
+                        aria-label="Sajiva films">
+                        <div class="showcase__light" aria-hidden="true"></div>
+                        <div class="showcase__floor" aria-hidden="true"></div>
+
+                        <div class="film" data-pos="front">
+                            <video muted loop playsinline preload="auto" poster="video/card-coffee.jpg"
+                                src="video/card-coffee.mp4"></video>
+                            <div class="film__label">
+                                <span class="pill" data-i18n="film_1">Kopi Cibulao · QC</span>
+                                <a class="plus" href="cibulao-coffee.html" aria-label="Cibulao Coffee">+</a>
+                            </div>
+                        </div>
+                        <div class="film" data-pos="right">
+                            <video muted loop playsinline preload="metadata" poster="video/card-origin.jpg"
+                                src="video/card-origin.mp4"></video>
+                            <div class="film__label">
+                                <span class="pill" data-i18n="film_2">Cengkeh &amp; kapulaga</span>
+                                <a class="plus" href="cardamom-page.html" aria-label="Cardamom">+</a>
+                            </div>
+                        </div>
+                        <div class="film" data-pos="left">
+                            <video muted loop playsinline preload="metadata" poster="video/card-harvest.jpg"
+                                src="video/card-harvest.mp4"></video>
+                            <div class="film__label">
+                                <span class="pill" data-i18n="film_3">Panen bersama petani</span>
+                                <a class="plus" href="essential-oil.html" aria-label="Essential oil">+</a>
+                            </div>
+                        </div>
+
+                        <div class="showcase__dots" role="tablist">
+                            <button class="dot" aria-label="Film 1"></button>
+                            <button class="dot" aria-label="Film 2"></button>
+                            <button class="dot" aria-label="Film 3"></button>
                         </div>
                     </div>
                 </div>
@@ -1828,45 +2270,64 @@
             </div>
         </section>
 
-        <!-- Story -->
+        <!-- Story: why partner with Sajiva -->
         <section class="section" id="sajiva-story">
             <div class="wrap story__grid">
+                <div class="books reveal" aria-hidden="true">
+                    <div class="books__shadow"></div>
+                    <div class="book-wrap book-wrap--back">
+                        <div class="book">
+                            <div class="book__face book__back"></div>
+                            <div class="book__face book__spine"><span>Sajiva · Masterpieces</span></div>
+                            <div class="book__face book__pages"></div>
+                            <div class="book__face book__front"><img src="img/book-masterpieces.jpg" alt=""
+                                    loading="lazy"></div>
+                        </div>
+                    </div>
+                    <div class="book-wrap book-wrap--front">
+                        <div class="book">
+                            <div class="book__face book__back"></div>
+                            <div class="book__face book__spine"><span>Sajiva · Journey</span></div>
+                            <div class="book__face book__pages"></div>
+                            <div class="book__face book__front"><img src="img/book-journey.jpg"
+                                    alt="Exporter Pertanian Jabodetabek- Exporter Rempah Bogor - Exporter  Rempah Makassar - Exporter Kopi Jabodetabek sajiva catalog"
+                                    loading="lazy"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="story__text">
                     <span class="eyebrow reveal">The Origin</span>
                     <h2 class="display story__title reveal" data-i18n="story_title">Mengapa Sajiva? Apa itu Sajiva?</h2>
-                    <div class="story__body">
-                        <p class="reveal" data-i18n="story_p1">Dari suburnya Tanah Indonesia, kami menghadirkan produk
-                            berkualitas terbaik langsung dari petani nusantara untuk memenuhi kebutuhan konsumen akan
-                            produk yang segar, alami, dan terpercaya.</p>
-                        <p class="reveal" data-i18n="story_p2">Kami membangun win-win solution yang tidak hanya
-                            menghadirkan produk terbaik bagi konsumen, tetapi juga membantu membawa petani ke hilir —
-                            menciptakan nilai tambah, pengolahan, hingga akses pasar yang lebih luas bagi petani
-                            Indonesia.</p>
-                    </div>
-                    <blockquote class="story__quote reveal" data-i18n="story_quote">"Kami persembahkan
-                        <span>mahakarya petani nusantara untuk anda</span>."</blockquote>
-                    <p class="story__sign reveal"><span data-i18n="story_sign">Sincerely with love,</span><br><span>Founders</span></p>
-                    <a href="pdf/SAJIVA-JOURNEY-1.pdf" download="SAJIVA-JOURNEY-1.pdf" class="btn btn--dark reveal">
-                        <i class="fa-solid fa-download"></i><span data-i18n="read_ourstory">Unduh cerita kami</span>
-                    </a>
-                </div>
-
-                <div class="story__visual reveal" data-delay="1">
-                    <div class="story__frame">
-                        <img src="cover/Exporter Pertanian Jabodetabek- Exporter Rempah Bogor - Exporter  Rempah Makassar - Exporter Kopi Jabodetabek.jpeg"
-                            alt="Exporter Pertanian Jabodetabek- Exporter Rempah Bogor - Exporter  Rempah Makassar - Exporter Kopi Jabodetabek sajiva catalog"
-                            loading="lazy">
-                    </div>
-                    <div class="story__badge">
-                        <i class="fa-solid fa-seedling"></i>
-                        <div><strong data-i18n="badge_title">Direct from origin</strong><small
-                                data-i18n="badge_sub">Makassar &amp; Bogor, Indonesia</small></div>
+                    <ol class="reasons">
+                        <li class="reveal">
+                            <h3><b>#1</b><span data-i18n="why1_title">Langsung dari petani nusantara</span></h3>
+                            <p data-i18n="story_p1">Dari suburnya Tanah Indonesia, kami menghadirkan produk berkualitas
+                                terbaik langsung dari petani nusantara untuk memenuhi kebutuhan konsumen akan produk
+                                yang segar, alami, dan terpercaya.</p>
+                        </li>
+                        <li class="reveal" data-delay="1">
+                            <h3><b>#2</b><span data-i18n="why2_title">Rantai pasok B2B yang tangguh</span></h3>
+                            <p data-i18n="story_p2">Kami membangun win-win solution yang tidak hanya menghadirkan
+                                produk terbaik bagi konsumen, tetapi juga membantu membawa petani ke hilir.</p>
+                        </li>
+                        <li class="reveal" data-delay="2">
+                            <h3><b>#3</b><span data-i18n="why3_title">Mahakarya untuk bisnis Anda</span></h3>
+                            <p class="quote" data-i18n="story_quote">"Kami persembahkan <span>mahakarya petani
+                                    nusantara untuk anda</span>."</p>
+                        </li>
+                    </ol>
+                    <div class="story__foot reveal">
+                        <a href="pdf/SAJIVA-JOURNEY-1.pdf" download="SAJIVA-JOURNEY-1.pdf" class="btn btn--dark">
+                            <i class="fa-solid fa-download"></i><span data-i18n="read_ourstory">Unduh cerita kami</span>
+                        </a>
+                        <p class="story__sign"><span data-i18n="story_sign">Sincerely with love,</span><br><span>Founders</span></p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Products -->
+        <!-- Products: rotating deck -->
         <section class="section products" id="be-better">
             <div class="wrap">
                 <div class="section-head">
@@ -1878,55 +2339,45 @@
                         dokumen ekspor lengkap, dan sampel tersedia sebelum pemesanan.</p>
                 </div>
 
-                <div class="products__grid">
-                    <a href="cardamom-page.html" class="product reveal">
-                        <img src="cover/Exporter Rempah Jabodetabek- Exporter Rempah Bogor - Exporter  Rempah Makassar - organic cardamom.png"
+                <div class="deck reveal" id="deck" data-interval="4200" aria-roledescription="carousel">
+                    <a href="cardamom-page.html" class="deck__card" data-pos="front">
+                        <img src="img/product-cardamom.jpg"
                             alt="B2B Wholesale Organic Cardamom Supplier Makassar - Exporter Rempah Jabodetabek- Exporter Rempah Bogor - Exporter  Rempah Makassar - organic cardamom"
                             loading="lazy">
-                        <span class="product__index">01</span>
-                        <span class="product__origin">Makassar</span>
-                        <div class="product__body">
-                            <h3 data-i18n="card_1">Organic Cardamom</h3>
-                            <span class="product__more"><span data-i18n="product_more">Lihat detail</span><i
-                                    class="fa-solid fa-arrow-right"></i></span>
-                        </div>
+                        <span class="deck__index">01</span>
+                        <span class="film__label"><span class="pill" data-i18n="card_1">Organic Cardamom</span><span
+                                class="plus">+</span></span>
                     </a>
-                    <a href="essential-oil.html" class="product reveal" data-delay="1">
-                        <img src="cover/Exporter Clove Oil - Exporter Rempah Bogor - Exporter  Rempah Makassar - organic clove.png"
+                    <a href="essential-oil.html" class="deck__card" data-pos="right">
+                        <img src="img/product-essential-oil.jpg"
                             alt="Bulk Clove Essential Oil Exporter - Pabrik Ekspor Rempah Jabodetabek Bogor - Exporter Clove Oil - Exporter Rempah Bogor - Exporter  Rempah Makassar - organic clove"
                             loading="lazy">
-                        <span class="product__index">02</span>
-                        <span class="product__origin">Distilled</span>
-                        <div class="product__body">
-                            <h3 data-i18n="card_2">Clove and Cardamom essential oil</h3>
-                            <span class="product__more"><span data-i18n="product_more">Lihat detail</span><i
-                                    class="fa-solid fa-arrow-right"></i></span>
-                        </div>
+                        <span class="deck__index">02</span>
+                        <span class="film__label"><span class="pill" data-i18n="card_2">Clove and Cardamom essential
+                                oil</span><span class="plus">+</span></span>
                     </a>
-                    <a href="vco-page.html" class="product reveal" data-delay="2">
-                        <img src="cover/Buy bulk organic cold-pressed VCO Indonesia - Indonesian virgin coconut oil bulk.png"
+                    <a href="vco-page.html" class="deck__card" data-pos="back">
+                        <img src="img/product-vco.jpg"
                             alt="Buy bulk organic cold-pressed VCO Indonesia - Indonesian virgin coconut oil bulk"
                             loading="lazy">
-                        <span class="product__index">03</span>
-                        <span class="product__origin">Cold-pressed</span>
-                        <div class="product__body">
-                            <h3 data-i18n="card_3">Virgin Coconut Oil (VCO)</h3>
-                            <span class="product__more"><span data-i18n="product_more">Lihat detail</span><i
-                                    class="fa-solid fa-arrow-right"></i></span>
-                        </div>
+                        <span class="deck__index">03</span>
+                        <span class="film__label"><span class="pill" data-i18n="card_3">Virgin Coconut Oil
+                                (VCO)</span><span class="plus">+</span></span>
                     </a>
-                    <a href="cibulao-coffee.html" class="product reveal" data-delay="3">
-                        <img src="cover/High cupping score indonesian fine robusta bulk - Buy bulk Indonesian fine robusta coffee.png"
+                    <a href="cibulao-coffee.html" class="deck__card" data-pos="left">
+                        <img src="img/product-coffee.jpg"
                             alt="Distributor Kopi B2B Bogor Jawa Tengah - Green Beans Cibulao Arabica Robusta Bulk-High cupping score indonesian fine robusta bulk - Buy bulk Indonesian fine robusta coffee"
                             loading="lazy">
-                        <span class="product__index">04</span>
-                        <span class="product__origin">Bogor</span>
-                        <div class="product__body">
-                            <h3 data-i18n="card_4">Shade Coffee Cibulao</h3>
-                            <span class="product__more"><span data-i18n="product_more">Lihat detail</span><i
-                                    class="fa-solid fa-arrow-right"></i></span>
-                        </div>
+                        <span class="deck__index">04</span>
+                        <span class="film__label"><span class="pill" data-i18n="card_4">Shade Coffee
+                                Cibulao</span><span class="plus">+</span></span>
                     </a>
+                </div>
+
+                <div class="deck__nav reveal">
+                    <button class="deck__arrow" id="deckPrev" aria-label="Previous">&larr;</button>
+                    <div class="deck__dots" id="deckDots"></div>
+                    <button class="deck__arrow" id="deckNext" aria-label="Next">&rarr;</button>
                 </div>
             </div>
         </section>
@@ -2108,37 +2559,129 @@
 
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        /* ---------- Hero film ---------- */
+        /* ---------- Rotating stacks (hero films + product deck) ---------- */
+        class Rotator {
+            constructor(root, items, dots, opts = {}) {
+                this.root = root;
+                this.items = items;
+                this.dots = dots;
+                this.n = items.length;
+                this.active = 0;
+                this.interval = parseInt(root.dataset.interval, 10) || 6000;
+                this.onChange = opts.onChange || (() => { });
+                this.paused = false;
+                this.timer = null;
+                root.style.setProperty('--dur', this.interval + 'ms');
+                this.dots.forEach((d, i) => d.addEventListener('click', () => { this.go(i); }));
+                this.items.forEach((el, i) => el.addEventListener('click', e => {
+                    if (i !== this.active) { e.preventDefault(); this.go(i); }
+                }));
+                this.render();
+            }
+            posFor(i) {
+                const off = (i - this.active + this.n) % this.n;
+                if (off === 0) return 'front';
+                if (off === 1) return 'right';
+                if (off === this.n - 1) return 'left';
+                return 'back';
+            }
+            render() {
+                this.items.forEach((el, i) => {
+                    el.dataset.pos = this.posFor(i);
+                    el.setAttribute('aria-hidden', String(i !== this.active));
+                });
+                this.dots.forEach((d, i) => {
+                    d.classList.remove('is-active');
+                    if (i === this.active) { void d.offsetWidth; d.classList.add('is-active'); }
+                });
+                this.onChange(this.active);
+                this.schedule();
+            }
+            go(i) { this.active = (i + this.n) % this.n; this.render(); }
+            next() { this.go(this.active + 1); }
+            prev() { this.go(this.active - 1); }
+            schedule() {
+                clearTimeout(this.timer);
+                if (!this.paused && !reduceMotion) this.timer = setTimeout(() => this.next(), this.interval);
+            }
+            pause() { this.paused = true; clearTimeout(this.timer); this.root.classList.add('is-paused'); }
+            resume() { this.paused = false; this.root.classList.remove('is-paused'); this.render(); }
+        }
+
+        /* Hero films */
         const hero = document.getElementById('hero');
-        const heroVideo = document.getElementById('heroVideo');
+        const showcase = document.getElementById('showcase');
+        const films = [...showcase.querySelectorAll('.film')];
+        const filmVideos = films.map(f => f.querySelector('video'));
         const toggle = document.getElementById('videoToggle');
         const toggleLabel = document.getElementById('videoToggleLabel');
 
-        function pickHeroSource() {
-            const portrait = window.innerHeight > window.innerWidth;
-            return portrait ? heroVideo.dataset.mobile : heroVideo.dataset.desktop;
-        }
-
-        if (!reduceMotion) {
-            heroVideo.src = pickHeroSource();
-            heroVideo.addEventListener('playing', () => hero.classList.add('is-live'), { once: true });
-            heroVideo.play().catch(() => { /* autoplay blocked: poster stays */ });
-        } else {
-            toggle.style.display = 'none';
-        }
+        const filmRotator = new Rotator(showcase, films, [...showcase.querySelectorAll('.dot')], {
+            onChange(active) {
+                filmVideos.forEach((v, i) => {
+                    if (i === active && !this.paused && !reduceMotion) {
+                        v.play().catch(() => { });
+                    } else if (i !== active) {
+                        v.pause();
+                    }
+                });
+            }
+        });
+        // the first onChange ran before filmRotator existed; start the front film now
+        if (!reduceMotion) filmVideos[0].play().catch(() => { });
 
         toggle.addEventListener('click', () => {
-            if (heroVideo.paused) {
-                heroVideo.play();
-                toggle.querySelector('i').className = 'fa-solid fa-pause';
+            const icon = toggle.querySelector('i');
+            if (filmRotator.paused) {
+                filmRotator.resume();
+                icon.className = 'fa-solid fa-pause';
                 toggleLabel.textContent = 'Pause';
                 toggle.setAttribute('aria-label', 'Pause video');
             } else {
-                heroVideo.pause();
-                toggle.querySelector('i').className = 'fa-solid fa-play';
+                filmRotator.pause();
+                filmVideos.forEach(v => v.pause());
+                icon.className = 'fa-solid fa-play';
                 toggleLabel.textContent = 'Play';
                 toggle.setAttribute('aria-label', 'Play video');
             }
+        });
+
+        // Stop decoding video while the hero is off screen
+        new IntersectionObserver(([e]) => {
+            if (filmRotator.paused) return;
+            const v = filmVideos[filmRotator.active];
+            if (e.isIntersecting) { v.play().catch(() => { }); filmRotator.schedule(); }
+            else { v.pause(); clearTimeout(filmRotator.timer); }
+        }, { threshold: 0.1 }).observe(hero);
+
+        /* Product deck */
+        const deck = document.getElementById('deck');
+        const deckCards = [...deck.querySelectorAll('.deck__card')];
+        const deckDots = document.getElementById('deckDots');
+        deckCards.forEach((c, i) => {
+            const b = document.createElement('button');
+            b.className = 'dot';
+            b.setAttribute('aria-label', 'Product ' + (i + 1));
+            deckDots.appendChild(b);
+        });
+        const deckRotator = new Rotator(deck, deckCards, [...deckDots.children]);
+        deckDots.style.setProperty('--dur', deckRotator.interval + 'ms');
+        document.getElementById('deckPrev').addEventListener('click', () => deckRotator.prev());
+        document.getElementById('deckNext').addEventListener('click', () => deckRotator.next());
+        deck.addEventListener('mouseenter', () => { deckRotator.pause(); deckDots.classList.add('is-paused'); });
+        deck.addEventListener('mouseleave', () => { deckDots.classList.remove('is-paused'); deckRotator.resume(); });
+        new IntersectionObserver(([e]) => {
+            if (e.isIntersecting) { deckDots.classList.remove('is-paused'); deckRotator.resume(); }
+            else { deckRotator.pause(); deckDots.classList.add('is-paused'); }
+        }, { threshold: 0.3 }).observe(deck);
+        // swipe on touch screens
+        let touchX = null;
+        deck.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+        deck.addEventListener('touchend', e => {
+            if (touchX === null) return;
+            const dx = e.changedTouches[0].clientX - touchX;
+            if (Math.abs(dx) > 40) dx < 0 ? deckRotator.next() : deckRotator.prev();
+            touchX = null;
         });
 
         /* ---------- Intro curtain ---------- */
@@ -2150,6 +2693,7 @@
             intro.classList.add('is-done');
             document.body.classList.remove('is-locked');
             hero.classList.add('is-revealed');
+            filmRotator.render();
             setTimeout(() => intro.remove(), 1300);
             try { sessionStorage.setItem('sajiva_intro', '1'); } catch (e) { }
         }
@@ -2161,8 +2705,8 @@
             // Wait for the film to be ready, but never longer than ~2.6s
             const minTime = new Promise(r => setTimeout(r, 1900));
             const ready = new Promise(r => {
-                if (heroVideo.readyState >= 3) return r();
-                heroVideo.addEventListener('canplay', r, { once: true });
+                if (filmVideos[0].readyState >= 3) return r();
+                filmVideos[0].addEventListener('canplay', r, { once: true });
                 setTimeout(r, 2600);
             });
             Promise.all([minTime, ready]).then(revealHero);
@@ -2406,6 +2950,12 @@
         // Copy for the new homepage sections
         const extra = {
             id: {
+                film_1: "Kopi Cibulao · QC",
+                film_2: "Cengkeh & kapulaga",
+                film_3: "Panen bersama petani",
+                why1_title: "Langsung dari petani nusantara",
+                why2_title: "Rantai pasok B2B yang tangguh",
+                why3_title: "Mahakarya untuk bisnis Anda",
                 hero_desc: "Kopi, rempah, minyak atsiri, dan VCO langsung dari petani nusantara — untuk importir, roastery, dan produsen di seluruh dunia.",
                 hero_scroll: "Gulir",
                 trust_facility: "Fasilitas Produksi",
@@ -2429,6 +2979,12 @@
                 impact_watch: "Tonton di YouTube"
             },
             en: {
+                film_1: "Cibulao coffee · QC",
+                film_2: "Clove & cardamom",
+                film_3: "Harvest with our farmers",
+                why1_title: "Direct from Indonesian farmers",
+                why2_title: "A resilient B2B supply chain",
+                why3_title: "Masterpieces for your business",
                 hero_desc: "Coffee, spices, essential oils and VCO sourced directly from Indonesian farmers — for importers, roasteries and manufacturers worldwide.",
                 hero_scroll: "Scroll",
                 trust_facility: "Production Facilities",
@@ -2452,6 +3008,12 @@
                 impact_watch: "Watch on YouTube"
             },
             zh: {
+                film_1: "Cibulao 咖啡 · 质检",
+                film_2: "丁香与小豆蔻",
+                film_3: "与农民一起收获",
+                why1_title: "直接来自印尼农民",
+                why2_title: "稳健的 B2B 供应链",
+                why3_title: "为您的企业呈现杰作",
                 hero_desc: "咖啡、香料、精油和初榨椰子油，直接来自印尼农民——服务全球进口商、烘焙商和制造商。",
                 hero_scroll: "向下滚动",
                 trust_facility: "生产设施",
@@ -2475,6 +3037,12 @@
                 impact_watch: "在 YouTube 观看"
             },
             ar: {
+                film_1: "قهوة سيبولاو · الجودة",
+                film_2: "القرنفل والهيل",
+                film_3: "الحصاد مع مزارعينا",
+                why1_title: "مباشرة من المزارعين الإندونيسيين",
+                why2_title: "سلسلة توريد B2B متينة",
+                why3_title: "روائع لأعمالكم",
                 hero_desc: "قهوة وتوابل وزيوت عطرية وزيت جوز الهند البكر مباشرة من المزارعين الإندونيسيين — للمستوردين والمحامص والمصنّعين حول العالم.",
                 hero_scroll: "مرّر للأسفل",
                 trust_facility: "منشآت الإنتاج",
