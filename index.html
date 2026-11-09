@@ -1,69 +1,1665 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sajiva Agro | B2B Coffee Supplier & Wholesale Spice Exporter</title>
     <meta name="description"
-        content="PT. Sajiva Agro Lestari adalah distributor B2B dan pabrik ekspor kopi (Jabodetabek, Bogor, Jateng) serta pemasok rempah grosir (Makassar). Melayani pengadaan bulk, FOB, dan CIF untuk ekspor global. B2B Wholesale Exporter of Arabica, Robusta & Spices. 咖啡和香料批发供应商. مورد جملة للقهوة والتوابل.">
+        content="PT. Sajiva Agro Lestari adalah distributor B2B dan pabrik ekspor kopi (Jabodetabek, Bogor, Jateng) serta pemasok rempah grosir (Makassar). Melayani pengadaan bulk, FOB, dan CIF untuk ekspor global. B2B Wholesale Supplier.">
     <meta name="keywords"
-        content="Exportir Kopi Jabodetabek, Exportir Kopi Bogor, Exportir Kopi Jawa Tengah, Exportir Rempah Makassar, Exportir Rempah Bogor, Exportir Rempah Jabodetabek, B2B Coffee Supplier, Wholesale Spice Exporter, Bulk Arabica Robusta, 雅加达咖啡出口商, 望加锡香料出口商, مصدّر قهوة بوجور, مصدّر توابل ماكاسار">
+        content="Exportir Kopi Jabodetabek, Exportir Kopi Bogor, Exportir Kopi Jawa Tengah, Exportir Rempah Makassar, Exportir Rempah Bogor, Exportir Rempah Jabodetabek, B2B Coffee Supplier, Wholesale Spice Exporter, Bulk Cardamom, Clove Essential Oil, Virgin Coconut Oil Bulk, Cibulao Coffee">
+    <meta name="theme-color" content="#12261a">
+    <link rel="canonical" href="https://sajivaagrolestari.com/">
+    <link rel="icon" href="logos/sajiva-logo-buletan.jpeg">
 
-    <!-- Google Fonts: Poppins -->
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sajiva Agro | B2B Coffee Supplier & Wholesale Spice Exporter">
+    <meta property="og:description"
+        content="Direct-from-origin Indonesian coffee, cardamom, essential oils and VCO for importers, roasteries and manufacturers. FOB / CIF.">
+    <meta property="og:url" content="https://sajivaagrolestari.com/">
+    <meta property="og:image" content="https://sajivaagrolestari.com/video/hero-desktop-poster.jpg">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
-    <!-- FontAwesome for Icons -->
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        sajiva: {
-                            green: '#2e7d32',
-                            dark: '#1b4b1e',
-                            light: '#fdfbf7',
-                            earth: '#8b5a2b',
-                            sand: '#eaddcf'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                    }
-                }
+    <!-- Start fetching the hero film before anything else -->
+    <link rel="preload" as="image" href="video/hero-desktop-poster.jpg" media="(min-aspect-ratio: 1/1)">
+    <link rel="preload" as="image" href="video/hero-mobile-poster.jpg" media="(max-aspect-ratio: 1/1)">
+
+    <style>
+        :root {
+            --forest: #12261a;
+            --forest-2: #1b3324;
+            --green: #2e7d32;
+            --cream: #f6f1e7;
+            --paper: #fbf8f2;
+            --sand: #eaddcf;
+            --earth: #8b5a2b;
+            --gold: #c9a24e;
+            --gold-soft: #e3c98b;
+            --ink: #1d1b17;
+            --muted: #5f5a52;
+            --line: rgba(29, 27, 23, .12);
+            --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+            --sans: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            --ease: cubic-bezier(.22, .61, .36, 1);
+            --ease-out: cubic-bezier(.16, 1, .3, 1);
+            --wrap: 1240px;
+            --gutter: clamp(20px, 5vw, 48px);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--sans);
+            font-weight: 400;
+            color: var(--ink);
+            background: var(--paper);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        body.is-locked {
+            overflow: hidden;
+        }
+
+        img,
+        video {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: var(--wrap);
+            margin: 0 auto;
+            padding: 0 var(--gutter);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            color: var(--earth);
+        }
+
+        .eyebrow::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: currentColor;
+            opacity: .6;
+        }
+
+        .display {
+            font-family: var(--serif);
+            font-weight: 500;
+            line-height: 1.04;
+            letter-spacing: -.01em;
+            margin: 0;
+        }
+
+        .display em {
+            font-style: italic;
+            color: var(--earth);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 28px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: .04em;
+            transition: background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease), transform .4s var(--ease);
+            cursor: pointer;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+
+        .btn i {
+            font-size: 12px;
+            transition: transform .4s var(--ease);
+        }
+
+        .btn:hover i {
+            transform: translateX(4px);
+        }
+
+        .btn--gold {
+            background: var(--gold);
+            color: var(--forest);
+        }
+
+        .btn--gold:hover {
+            background: #fff;
+        }
+
+        .btn--ghost {
+            border-color: rgba(255, 255, 255, .45);
+            color: #fff;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            background: rgba(255, 255, 255, .06);
+        }
+
+        .btn--ghost:hover {
+            background: #fff;
+            color: var(--forest);
+        }
+
+        .btn--dark {
+            background: var(--forest);
+            color: var(--cream);
+        }
+
+        .btn--dark:hover {
+            background: var(--green);
+        }
+
+        /* ---------- Intro curtain ---------- */
+        .intro {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: var(--forest);
+            color: var(--cream);
+            display: grid;
+            place-items: center;
+            clip-path: inset(0 0 0 0);
+            transition: clip-path 1.2s var(--ease-out);
+        }
+
+        .intro.is-done {
+            clip-path: inset(0 0 100% 0);
+        }
+
+        .intro__inner {
+            text-align: center;
+        }
+
+        .intro__logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            margin: 0 auto 22px;
+            opacity: 0;
+            transform: scale(.85);
+            animation: introLogo 1s var(--ease-out) .1s forwards;
+        }
+
+        .intro__word {
+            font-family: var(--serif);
+            font-size: clamp(40px, 8vw, 72px);
+            letter-spacing: .32em;
+            margin: 0 0 0 .32em;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .intro__word span {
+            display: inline-block;
+            transform: translateY(110%);
+            animation: introLetter .9s var(--ease-out) forwards;
+        }
+
+        .intro__tag {
+            margin-top: 14px;
+            font-size: 11px;
+            letter-spacing: .4em;
+            text-transform: uppercase;
+            color: var(--gold-soft);
+            opacity: 0;
+            animation: fadeIn .8s ease .9s forwards;
+        }
+
+        .intro__bar {
+            width: 120px;
+            height: 1px;
+            margin: 26px auto 0;
+            background: rgba(246, 241, 231, .2);
+            overflow: hidden;
+        }
+
+        .intro__bar::after {
+            content: '';
+            display: block;
+            height: 100%;
+            background: var(--gold);
+            transform-origin: left;
+            transform: scaleX(0);
+            animation: introBar 1.6s var(--ease) .2s forwards;
+        }
+
+        @keyframes introLogo {
+            to {
+                opacity: 1;
+                transform: none;
             }
         }
-    </script>
-    <style>
-        /* Custom Styles & Overrides */
-        body {
-            font-family: 'Poppins', sans-serif;
+
+        @keyframes introLetter {
+            to {
+                transform: none;
+            }
         }
 
-        .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
+        @keyframes introBar {
+            to {
+                transform: scaleX(1);
+            }
         }
 
-        .catalog-shadow {
-            box-shadow: 20px 20px 0px 0px rgba(46, 125, 50, 0.2);
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
         }
 
-        .card-hover {
-            transition: all 0.3s ease;
+        /* ---------- Navigation ---------- */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            color: #fff;
+            transition: background .5s var(--ease), color .5s var(--ease), box-shadow .5s var(--ease), transform .5s var(--ease);
         }
 
-        .card-hover:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        .nav__bar {
+            height: 84px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            transition: height .5s var(--ease);
+        }
+
+        .nav.is-solid {
+            background: rgba(251, 248, 242, .92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            color: var(--ink);
+            box-shadow: 0 1px 0 var(--line);
+        }
+
+        .nav.is-solid .nav__bar {
+            height: 70px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, .5);
+        }
+
+        .brand__name {
+            font-family: var(--serif);
+            font-size: 26px;
+            font-weight: 600;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .brand__name small {
+            display: block;
+            font-family: var(--sans);
+            font-size: 9px;
+            letter-spacing: .38em;
+            font-weight: 500;
+            opacity: .7;
+            margin-top: 4px;
+        }
+
+        .nav__links {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+        }
+
+        .nav__links a.link {
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: .06em;
+            position: relative;
+            padding: 6px 0;
+            opacity: .9;
+        }
+
+        .nav__links a.link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 1px;
+            background: currentColor;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform .5s var(--ease);
+        }
+
+        .nav__links a.link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .nav__cta {
+            padding: 11px 22px;
+            font-size: 13px;
+        }
+
+        .nav.is-solid .nav__cta {
+            background: var(--forest);
+            color: var(--cream);
+        }
+
+        .nav.is-solid .nav__cta:hover {
+            background: var(--green);
+        }
+
+        .lang {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, .3);
+            transition: border-color .5s var(--ease);
+        }
+
+        .nav.is-solid .lang {
+            border-color: var(--line);
+        }
+
+        .lang select {
+            appearance: none;
+            -webkit-appearance: none;
+            background: transparent;
+            border: 0;
+            color: inherit;
+            font: inherit;
+            letter-spacing: .08em;
+            cursor: pointer;
+            outline: none;
+            padding-right: 2px;
+        }
+
+        .lang select option {
+            color: var(--ink);
+        }
+
+        .nav__mobile {
+            display: none;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .burger {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, .35);
+            background: transparent;
+            color: inherit;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .nav.is-solid .burger {
+            border-color: var(--line);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 150;
+            background: var(--forest);
+            color: var(--cream);
+            display: flex;
+            flex-direction: column;
+            padding: 24px var(--gutter) 40px;
+            transform: translateY(-100%);
+            transition: transform .7s var(--ease-out), visibility 0s linear .7s;
+        }
+
+        .mobile-menu {
+            visibility: hidden;
+        }
+
+        .mobile-menu.is-open {
+            transform: none;
+            visibility: visible;
+            transition: transform .7s var(--ease-out), visibility 0s;
+        }
+
+        .mobile-menu.hidden {
+            /* class kept for script compatibility; visibility is driven by .is-open */
+        }
+
+        .mobile-menu__top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .mobile-menu nav {
+            margin-top: 8vh;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .mobile-menu nav a {
+            font-family: var(--serif);
+            font-size: 40px;
+            line-height: 1.25;
+            border-bottom: 1px solid rgba(246, 241, 231, .12);
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mobile-menu nav a i {
+            font-size: 16px;
+            color: var(--gold);
+        }
+
+        .mobile-menu__foot {
+            margin-top: auto;
+            font-size: 13px;
+            color: rgba(246, 241, 231, .7);
+            display: grid;
+            gap: 6px;
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            height: 100svh;
+            min-height: 600px;
+            overflow: hidden;
+            background: var(--forest);
+            color: #fff;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .hero__media {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .hero__poster,
+        .hero__video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.08);
+            transition: transform 2.8s var(--ease-out), opacity 1.6s ease;
+        }
+
+        .hero__video {
+            opacity: 0;
+        }
+
+        .hero.is-live .hero__video {
+            opacity: 1;
+        }
+
+        .hero.is-revealed .hero__poster,
+        .hero.is-revealed .hero__video {
+            transform: scale(1);
+        }
+
+        .hero__shade {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg, rgba(10, 22, 14, .55) 0%, rgba(10, 22, 14, 0) 26%),
+                linear-gradient(0deg, rgba(10, 22, 14, .88) 0%, rgba(10, 22, 14, .35) 45%, rgba(10, 22, 14, .15) 70%),
+                radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, .35) 100%);
+        }
+
+        .hero__grain {
+            position: absolute;
+            inset: -50%;
+            opacity: .09;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            animation: grain 1.2s steps(6) infinite;
+        }
+
+        @keyframes grain {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            20% {
+                transform: translate(-3%, 2%);
+            }
+
+            40% {
+                transform: translate(2%, -3%);
+            }
+
+            60% {
+                transform: translate(-2%, -1%);
+            }
+
+            80% {
+                transform: translate(3%, 3%);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding-bottom: clamp(110px, 16vh, 150px);
+        }
+
+        .hero__sub {
+            color: var(--gold-soft);
+        }
+
+        .hero__title {
+            font-size: clamp(52px, 10vw, 136px);
+            margin: 22px 0 26px;
+            color: #fff;
+            max-width: 11ch;
+        }
+
+        .hero__title .w {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: bottom;
+            padding-bottom: .06em;
+        }
+
+        .hero__title .w>span {
+            display: inline-block;
+            transform: translateY(105%);
+            transition: transform 1.3s var(--ease-out);
+        }
+
+        .hero.is-revealed .hero__title .w>span {
+            transform: none;
+        }
+
+        .hero__row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 28px 48px;
+        }
+
+        .hero__desc {
+            max-width: 520px;
+            font-size: clamp(15px, 1.3vw, 17px);
+            font-weight: 300;
+            color: rgba(255, 255, 255, .86);
+            margin: 0;
+        }
+
+        .hero__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 1.2s var(--ease-out), transform 1.2s var(--ease-out);
+        }
+
+        .hero.is-revealed .fade-up {
+            opacity: 1;
+            transform: none;
+        }
+
+        .hero__foot {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            border-top: 1px solid rgba(255, 255, 255, .16);
+        }
+
+        .hero__foot .wrap {
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            font-size: 11px;
+            letter-spacing: .24em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .72);
+        }
+
+        .scroll-cue {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .scroll-cue__line {
+            width: 1px;
+            height: 28px;
+            background: rgba(255, 255, 255, .25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-cue__line::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            animation: cue 2.2s var(--ease) infinite;
+        }
+
+        @keyframes cue {
+            to {
+                top: 100%;
+            }
+        }
+
+        .hero__origins {
+            display: flex;
+            gap: 22px;
+        }
+
+        .hero__origins span::before {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--gold);
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .video-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: none;
+            border: 0;
+            color: inherit;
+            font: inherit;
+            letter-spacing: inherit;
+            text-transform: inherit;
+            cursor: pointer;
+            padding: 8px 0;
+        }
+
+        .video-toggle i {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, .4);
+            display: grid;
+            place-items: center;
+            font-size: 9px;
+            letter-spacing: 0;
+        }
+
+        /* ---------- Trust strip ---------- */
+        .trust {
+            background: var(--forest);
+            color: var(--cream);
+        }
+
+        .trust__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .trust__item {
+            padding: 44px 28px;
+            border-left: 1px solid rgba(246, 241, 231, .1);
+        }
+
+        .trust__item:first-child {
+            border-left: 0;
+            padding-left: 0;
+        }
+
+        .trust__num {
+            font-family: var(--serif);
+            font-size: clamp(40px, 4.4vw, 58px);
+            line-height: 1;
+            color: var(--gold-soft);
+        }
+
+        .trust__num--text {
+            font-size: clamp(30px, 3.2vw, 44px);
+            white-space: nowrap;
+        }
+
+        .trust__label {
+            margin-top: 10px;
+            font-size: 13px;
+            color: rgba(246, 241, 231, .72);
+            letter-spacing: .04em;
+        }
+
+        /* ---------- Sections ---------- */
+        section {
+            position: relative;
+            scroll-margin-top: 69px;
+        }
+
+        .section {
+            padding: clamp(88px, 12vw, 160px) 0;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.1s var(--ease-out), transform 1.1s var(--ease-out);
+        }
+
+        .reveal.is-in {
+            opacity: 1;
+            transform: none;
+        }
+
+        .reveal[data-delay="1"] {
+            transition-delay: .12s;
+        }
+
+        .reveal[data-delay="2"] {
+            transition-delay: .24s;
+        }
+
+        .reveal[data-delay="3"] {
+            transition-delay: .36s;
+        }
+
+        /* Story */
+        .story__grid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: clamp(48px, 7vw, 110px);
+            align-items: center;
+        }
+
+        .story__title {
+            font-size: clamp(40px, 5vw, 68px);
+            margin: 22px 0 34px;
+        }
+
+        .story__body p {
+            color: var(--muted);
+            font-size: 16.5px;
+            font-weight: 300;
+            margin: 0 0 20px;
+        }
+
+        .story__quote {
+            margin: 38px 0 30px;
+            padding: 0 0 0 26px;
+            border-left: 1px solid var(--gold);
+            font-family: var(--serif);
+            font-size: clamp(24px, 2.4vw, 31px);
+            line-height: 1.3;
+            font-style: italic;
+            color: var(--ink);
+        }
+
+        .story__quote span {
+            background: linear-gradient(transparent 62%, rgba(201, 162, 78, .35) 62%);
+            font-style: normal;
+            font-weight: 500;
+            color: var(--forest);
+            padding: 0 2px;
+        }
+
+        .story__sign {
+            font-size: 14px;
+            color: var(--muted);
+            margin: 0 0 34px;
+        }
+
+        .story__sign span {
+            font-family: var(--serif);
+            font-size: 22px;
+            font-style: italic;
+            color: var(--green);
+        }
+
+        .story__visual {
+            position: relative;
+        }
+
+        .story__frame {
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            aspect-ratio: 906/1280;
+            box-shadow: 0 40px 80px -40px rgba(18, 38, 26, .45);
+        }
+
+        .story__frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.06);
+            transition: transform 1.8s var(--ease-out);
+        }
+
+        .story__visual.is-in .story__frame img {
+            transform: scale(1);
+        }
+
+        .story__badge {
+            position: absolute;
+            left: -28px;
+            bottom: 48px;
+            background: var(--paper);
+            padding: 20px 24px;
+            border-radius: 6px;
+            box-shadow: 0 24px 50px -24px rgba(18, 38, 26, .35);
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            max-width: 280px;
+        }
+
+        .story__badge i {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--forest);
+            color: var(--gold-soft);
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+        }
+
+        .story__badge strong {
+            display: block;
+            font-family: var(--serif);
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.1;
+        }
+
+        .story__badge small {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        /* Products */
+        .products {
+            background: var(--cream);
+        }
+
+        .section-head {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 24px 60px;
+            margin-bottom: clamp(48px, 6vw, 80px);
+        }
+
+        .section-head h2 {
+            font-size: clamp(40px, 5vw, 68px);
+            margin-top: 18px;
+        }
+
+        .section-head p {
+            max-width: 420px;
+            color: var(--muted);
+            font-weight: 300;
+            margin: 0;
+        }
+
+        .products__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .product {
+            position: relative;
+            display: block;
+            border-radius: 4px;
+            overflow: hidden;
+            aspect-ratio: 3/4.4;
+            background: var(--forest);
+            color: #fff;
+            isolation: isolate;
+        }
+
+        .product img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.4s var(--ease-out);
+            z-index: -2;
+        }
+
+        .product::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(0deg, rgba(10, 22, 14, .9) 0%, rgba(10, 22, 14, .2) 50%, rgba(10, 22, 14, .05) 100%);
+            transition: background .6s var(--ease);
+        }
+
+        .product:hover img {
+            transform: scale(1.07);
+        }
+
+        .product:hover::after {
+            background: linear-gradient(0deg, rgba(10, 22, 14, .95) 0%, rgba(10, 22, 14, .45) 60%, rgba(10, 22, 14, .2) 100%);
+        }
+
+        .product__index {
+            position: absolute;
+            top: 22px;
+            left: 24px;
+            font-family: var(--serif);
+            font-size: 18px;
+            font-style: italic;
+            color: var(--gold-soft);
+        }
+
+        .product__origin {
+            position: absolute;
+            top: 24px;
+            right: 22px;
+            font-size: 10px;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            padding: 6px 10px;
+            border: 1px solid rgba(255, 255, 255, .35);
+            border-radius: 999px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+
+        .product__body {
+            position: absolute;
+            left: 24px;
+            right: 24px;
+            bottom: 24px;
+        }
+
+        .product__body h3 {
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: clamp(25px, 2.1vw, 30px);
+            line-height: 1.1;
+            margin: 0 0 14px;
+        }
+
+        .product__more {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--gold-soft);
+        }
+
+        .product__more i {
+            transition: transform .5s var(--ease);
+        }
+
+        .product:hover .product__more i {
+            transform: translateX(6px);
+        }
+
+        /* Process */
+        .process__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid var(--line);
+        }
+
+        .step {
+            padding: 36px 28px 8px 0;
+            border-right: 1px solid var(--line);
+            margin-right: 28px;
+        }
+
+        .step:last-child {
+            border-right: 0;
+            margin-right: 0;
+        }
+
+        .step__no {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 22px;
+            color: var(--earth);
+        }
+
+        .step i {
+            display: block;
+            font-size: 22px;
+            color: var(--green);
+            margin: 22px 0 18px;
+        }
+
+        .step h3 {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 26px;
+            line-height: 1.15;
+            margin: 0 0 10px;
+        }
+
+        .step p {
+            margin: 0;
+            font-size: 14.5px;
+            color: var(--muted);
+            font-weight: 300;
+        }
+
+        /* Impact */
+        .impact {
+            background: var(--forest);
+            color: var(--cream);
+            overflow: hidden;
+        }
+
+        .impact .eyebrow {
+            color: var(--gold-soft);
+        }
+
+        .impact__grid {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: clamp(48px, 7vw, 110px);
+            align-items: center;
+        }
+
+        .impact__film {
+            position: relative;
+            display: block;
+            aspect-ratio: 16/9;
+            border-radius: 6px;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .impact__film video,
+        .impact__film img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .impact__film::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(0deg, rgba(10, 22, 14, .75), rgba(10, 22, 14, 0) 55%);
+        }
+
+        .impact__play {
+            position: absolute;
+            left: 26px;
+            bottom: 26px;
+            right: 26px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 12px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+        }
+
+        .impact__play i {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: var(--cream);
+            color: var(--forest);
+            display: grid;
+            place-items: center;
+            font-size: 15px;
+            padding-left: 3px;
+            transition: transform .5s var(--ease), background .5s var(--ease);
+        }
+
+        .impact__film:hover .impact__play i {
+            transform: scale(1.1);
+            background: var(--gold);
+        }
+
+        .impact__title {
+            font-size: clamp(40px, 5vw, 68px);
+            margin: 20px 0 30px;
+            color: var(--cream);
+        }
+
+        .impact__text p {
+            color: rgba(246, 241, 231, .76);
+            font-weight: 300;
+            margin: 0 0 18px;
+        }
+
+        .impact__sign {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 22px;
+            color: var(--gold-soft);
+            margin-top: 8px;
+        }
+
+        .impact__stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: rgba(246, 241, 231, .12);
+            margin-top: 40px;
+            border: 1px solid rgba(246, 241, 231, .12);
+        }
+
+        .impact__stats div {
+            background: var(--forest);
+            padding: 26px 24px;
+        }
+
+        .impact__stats strong {
+            display: block;
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: 48px;
+            line-height: 1;
+            color: var(--gold-soft);
+        }
+
+        .impact__stats span {
+            font-size: 13px;
+            color: rgba(246, 241, 231, .7);
+        }
+
+        .impact__counting {
+            margin-top: 14px;
+            font-size: 12px;
+            font-style: italic;
+            color: rgba(246, 241, 231, .5);
+        }
+
+        /* Contact / footer */
+        .cta {
+            background: var(--paper);
+            padding-bottom: 0;
+        }
+
+        .cta__card {
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            color: #fff;
+            padding: clamp(48px, 7vw, 96px) clamp(28px, 6vw, 84px);
+            isolation: isolate;
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 48px;
+            align-items: end;
+        }
+
+        .cta__card video,
+        .cta__card img.bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .cta__card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(90deg, rgba(10, 22, 14, .92) 0%, rgba(10, 22, 14, .72) 55%, rgba(10, 22, 14, .5) 100%);
+        }
+
+        .cta__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--gold-soft);
+            border: 1px solid rgba(227, 201, 139, .4);
+            padding: 7px 14px;
+            border-radius: 999px;
+        }
+
+        .cta__title {
+            font-size: clamp(38px, 4.6vw, 64px);
+            margin: 22px 0 18px;
+            color: #fff;
+        }
+
+        .cta__desc {
+            color: rgba(255, 255, 255, .8);
+            font-weight: 300;
+            max-width: 520px;
+            margin: 0;
+        }
+
+        .cta__side {
+            display: grid;
+            gap: 12px;
+        }
+
+        .cta__mail {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            background: var(--gold);
+            color: var(--forest);
+            padding: 18px 22px;
+            border-radius: 4px;
+            transition: background .4s var(--ease);
+        }
+
+        .cta__mail:hover {
+            background: #fff;
+        }
+
+        .cta__mail small {
+            display: block;
+            font-size: 11px;
+            letter-spacing: .08em;
+            opacity: .8;
+        }
+
+        .cta__mail strong {
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+        .cta__wa {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 22px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, .3);
+            transition: background .4s var(--ease), color .4s var(--ease);
+            font-size: 14px;
+        }
+
+        .cta__wa:hover {
+            background: #fff;
+            color: var(--forest);
+        }
+
+        .cta__meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, .65);
+            padding: 4px 2px 0;
+        }
+
+        .cta__meta i {
+            color: var(--gold-soft);
+            margin-right: 6px;
+        }
+
+        .footer {
+            background: var(--forest);
+            color: var(--cream);
+            margin-top: -120px;
+            padding: 200px 0 36px;
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 56px;
+            border-bottom: 1px solid rgba(246, 241, 231, .12);
+        }
+
+        .footer h4 {
+            font-size: 11px;
+            letter-spacing: .26em;
+            text-transform: uppercase;
+            color: var(--gold-soft);
+            font-weight: 500;
+            margin: 0 0 20px;
+        }
+
+        .footer p,
+        .footer li {
+            font-size: 14px;
+            color: rgba(246, 241, 231, .72);
+            font-weight: 300;
+        }
+
+        .footer ol,
+        .footer ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 12px;
+        }
+
+        .footer ol li {
+            display: flex;
+            gap: 10px;
+        }
+
+        .footer ol li::before {
+            content: counter(list-item, decimal-leading-zero);
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--gold-soft);
+        }
+
+        .footer a:hover {
+            color: #fff;
+        }
+
+        .footer__brand p {
+            max-width: 300px;
+            margin: 18px 0 0;
+        }
+
+        .socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .socials a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(246, 241, 231, .2);
+            display: grid;
+            place-items: center;
+            transition: background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease);
+        }
+
+        .socials a:hover {
+            background: var(--gold);
+            color: var(--forest);
+            border-color: var(--gold);
+        }
+
+        .footer__bottom {
+            padding-top: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 12px;
+            color: rgba(246, 241, 231, .5);
+            letter-spacing: .04em;
+        }
+
+        /* Floating WhatsApp */
+        .wa-float {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            z-index: 90;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            background: #25D366;
+            color: #fff;
+            border-radius: 999px;
+            padding: 14px;
+            box-shadow: 0 18px 40px -14px rgba(0, 0, 0, .45);
+            transition: gap .5s var(--ease), padding .5s var(--ease), transform .5s var(--ease), opacity .6s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .wa-float.is-visible {
+            opacity: 1;
+            transform: none;
+            pointer-events: auto;
+        }
+
+        .wa-float i {
+            font-size: 26px;
+        }
+
+        .wa-float span {
+            max-width: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 13px;
+            font-weight: 500;
+            transition: max-width .6s var(--ease);
+        }
+
+        .wa-float:hover {
+            gap: 10px;
+            padding-right: 20px;
+        }
+
+        .wa-float:hover span {
+            max-width: 220px;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 1080px) {
+            .products__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .step:nth-child(2) {
+                border-right: 0;
+                margin-right: 0;
+            }
+
+            .step:nth-child(n+3) {
+                border-top: 1px solid var(--line);
+            }
+
+            .footer__grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav__links {
+                display: none;
+            }
+
+            .nav__mobile {
+                display: flex;
+            }
+
+            .story__grid,
+            .impact__grid,
+            .cta__card {
+                grid-template-columns: 1fr;
+            }
+
+            .story__visual {
+                max-width: 480px;
+            }
+
+            .story__badge {
+                left: 16px;
+            }
+
+            .trust__grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .trust__item:nth-child(3) {
+                border-left: 0;
+                padding-left: 0;
+            }
+
+            .trust__item:nth-child(n+3) {
+                border-top: 1px solid rgba(246, 241, 231, .1);
+            }
+
+            .impact__grid {
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .brand__name small {
+                display: none;
+            }
+
+            .hero__origins {
+                display: none;
+            }
+
+            .hero__title {
+                margin: 18px 0 20px;
+            }
+
+            .hero__actions .btn {
+                flex: 1 1 auto;
+                justify-content: center;
+            }
+
+            .trust__item {
+                padding: 30px 16px;
+            }
+
+            .products__grid,
+            .process__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product {
+                aspect-ratio: 4/4.6;
+            }
+
+            .step {
+                border-right: 0;
+                margin-right: 0;
+                border-top: 1px solid var(--line);
+            }
+
+            .step:first-child {
+                border-top: 0;
+            }
+
+            .footer__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta__meta {
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            .hero__grain {
+                display: none;
+            }
         }
     </style>
 
@@ -85,570 +1681,565 @@
     </script>
 </head>
 
-<body class="bg-sajiva-light text-gray-800 antialiased overflow-x-hidden">
+<body class="is-locked">
+
+    <!-- Intro curtain -->
+    <div class="intro" id="intro" aria-hidden="true">
+        <div class="intro__inner">
+            <img class="intro__logo" src="logos/sajiva-logo-buletan.jpeg" alt="">
+            <p class="intro__word">
+                <span style="animation-delay:.15s">S</span><span style="animation-delay:.22s">A</span><span
+                    style="animation-delay:.29s">J</span><span style="animation-delay:.36s">I</span><span
+                    style="animation-delay:.43s">V</span><span style="animation-delay:.5s">A</span>
+            </p>
+            <div class="intro__tag">Pure · Simple · Beautiful</div>
+            <div class="intro__bar"></div>
+        </div>
+    </div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <img src="logos/sajiva-logo-buletan.jpeg" alt="Sajiva Logo"
-                        class="w-10 h-10 object-cover rounded-full shadow-sm border-2 border-sajiva-green">
-                    <span class="font-bold text-2xl text-sajiva-green tracking-tight">Sajiva</span>
-                </div>
+    <header class="nav" id="nav">
+        <div class="wrap nav__bar">
+            <a class="brand" href="#hero" aria-label="Sajiva Agro">
+                <img src="logos/sajiva-logo-buletan.jpeg" alt="Sajiva Logo">
+                <span class="brand__name">Sajiva<small>Agro Lestari</small></span>
+            </a>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#sajiva-story" class="text-gray-600 hover:text-sajiva-green font-medium transition-colors"
-                        data-i18n="nav_story">Sajiva Story</a>
-                    <a href="#community-impact"
-                        class="text-gray-600 hover:text-sajiva-green font-medium transition-colors"
-                        data-i18n="nav_impact">Community Impact</a>
-                    <a href="#be-better" class="text-gray-600 hover:text-sajiva-green font-medium transition-colors"
-                        data-i18n="nav_better">Our Product</a>
-                    <a href="#contact"
-                        class="bg-sajiva-green text-white px-5 py-2 rounded-full hover:bg-sajiva-dark font-medium transition-colors shadow-md"
-                        data-i18n="nav_start">Contact Us</a>
+            <nav class="nav__links" aria-label="Main">
+                <a class="link" href="#sajiva-story" data-i18n="nav_story">Sajiva Story</a>
+                <a class="link" href="#be-better" data-i18n="nav_better">Our Product</a>
+                <a class="link" href="#community-impact" data-i18n="nav_impact">Community Impact</a>
+                <label class="lang">
+                    <i class="fa-solid fa-globe"></i>
+                    <select id="languageSwitcher" aria-label="Language">
+                        <option value="id" selected>ID</option>
+                        <option value="en">EN</option>
+                        <option value="zh">中文</option>
+                        <option value="ar">AR</option>
+                    </select>
+                </label>
+                <a href="#contact" class="btn btn--ghost nav__cta" data-i18n="nav_start">Contact Us</a>
+            </nav>
 
-                    <!-- Language Switcher -->
-                    <div class="relative flex items-center bg-gray-100 rounded-full px-3 py-1">
-                        <i class="fa-solid fa-globe text-gray-500 mr-2 text-sm"></i>
-                        <select id="languageSwitcher"
-                            class="bg-transparent border-none text-sm font-medium text-gray-700 focus:outline-none focus:ring-0 cursor-pointer">
-                            <option value="id" selected>ID - Indonesia</option>
-                            <option value="en">EN - English</option>
-                            <option value="zh">ZH - 中文</option>
-                            <option value="ar">AR - العربية</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center gap-4">
-                    <select id="mobileLanguageSwitcher"
-                        class="bg-gray-100 border-none rounded-full px-2 py-1 text-xs font-medium text-gray-700 focus:outline-none">
+            <div class="nav__mobile">
+                <label class="lang">
+                    <select id="mobileLanguageSwitcher" aria-label="Language">
                         <option value="id" selected>ID</option>
                         <option value="en">EN</option>
                         <option value="zh">ZH</option>
                         <option value="ar">AR</option>
                     </select>
-                    <button id="mobileMenuBtn" class="text-gray-600 hover:text-sajiva-green focus:outline-none">
-                        <i class="fa-solid fa-bars text-2xl"></i>
+                </label>
+                <button class="burger" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu hidden" id="mobileMenu" aria-hidden="true">
+        <div class="mobile-menu__top">
+            <span class="brand__name">Sajiva</span>
+            <button class="burger" id="mobileMenuClose" aria-label="Close menu" style="border-color:rgba(246,241,231,.25)">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <nav>
+            <a href="#sajiva-story"><span data-i18n="nav_story">Sajiva Story</span><i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#be-better"><span data-i18n="nav_better">Our Product</span><i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#community-impact"><span data-i18n="nav_impact">Community Impact</span><i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#contact"><span data-i18n="nav_start">Contact Us</span><i class="fa-solid fa-arrow-right"></i></a>
+        </nav>
+        <div class="mobile-menu__foot">
+            <span>sajivaagrolestari@gmail.com</span>
+            <span>+62 887-4373-12018</span>
+            <span>Makassar · Bogor — Indonesia</span>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero" id="hero">
+            <div class="hero__media">
+                <picture>
+                    <source media="(max-aspect-ratio: 1/1)" srcset="video/hero-mobile-poster.jpg">
+                    <img class="hero__poster" src="video/hero-desktop-poster.jpg"
+                        alt="Indonesian green coffee beans hand-sorted at the Sajiva drying beds">
+                </picture>
+                <video class="hero__video" id="heroVideo" muted loop playsinline preload="auto"
+                    data-desktop="video/hero-desktop.mp4" data-mobile="video/hero-mobile.mp4"></video>
+                <div class="hero__shade"></div>
+                <div class="hero__grain"></div>
+            </div>
+
+            <div class="hero__content">
+                <div class="wrap">
+                    <span class="eyebrow hero__sub fade-up" style="transition-delay:.1s"
+                        data-i18n="hero_sub">Jadilah Bagian dari Perjalanan</span>
+                    <h1 class="display hero__title" id="heroTitle" data-i18n="hero_title">Murni. Sederhana. Indah.</h1>
+                    <div class="hero__row">
+                        <p class="hero__desc fade-up" style="transition-delay:.55s" data-i18n="hero_desc">Kopi, rempah,
+                            minyak atsiri, dan VCO langsung dari petani nusantara — untuk importir, roastery, dan
+                            produsen di seluruh dunia.</p>
+                        <div class="hero__actions fade-up" style="transition-delay:.7s">
+                            <a href="#contact" class="btn btn--gold"><span data-i18n="nav_start">Minta Penawaran
+                                    B2B</span><i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="#be-better" class="btn btn--ghost"><span data-i18n="hero_cta">Mulai
+                                    Perjalanan</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero__foot fade-up" style="transition-delay:.9s">
+                <div class="wrap">
+                    <a href="#trust" class="scroll-cue"><span class="scroll-cue__line"></span><span
+                            data-i18n="hero_scroll">Scroll</span></a>
+                    <div class="hero__origins">
+                        <span>Makassar</span><span>Bogor</span><span>Jawa Tengah</span>
+                    </div>
+                    <button class="video-toggle" id="videoToggle" aria-label="Pause video">
+                        <i class="fa-solid fa-pause"></i><span id="videoToggleLabel">Pause</span>
                     </button>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobileMenu"
-            class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg absolute w-full left-0">
-            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
-                <a href="#sajiva-story"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-sajiva-green hover:bg-gray-50 rounded-md"
-                    data-i18n="nav_story">Sajiva Story</a>
-                <a href="#community-impact"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-sajiva-green hover:bg-gray-50 rounded-md"
-                    data-i18n="nav_impact">Community Impact</a>
-                <a href="#be-better"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-sajiva-green hover:bg-gray-50 rounded-md"
-                    data-i18n="nav_better">Our Product</a>
-                <a href="#contact"
-                    class="block mt-4 text-center bg-sajiva-green text-white px-3 py-3 rounded-full font-medium hover:bg-sajiva-dark"
-                    data-i18n="nav_start">Contact Us</a>
+        <!-- Trust strip -->
+        <section class="trust" id="trust" aria-label="Sajiva at a glance">
+            <div class="wrap trust__grid">
+                <div class="trust__item reveal">
+                    <div class="trust__num" data-count="52">52</div>
+                    <div class="trust__label" data-i18n="stat_farmer">Mitra Petani</div>
+                </div>
+                <div class="trust__item reveal" data-delay="1">
+                    <div class="trust__num" data-count="4">4</div>
+                    <div class="trust__label" data-i18n="stat_village">Desa Mitra</div>
+                </div>
+                <div class="trust__item reveal" data-delay="2">
+                    <div class="trust__num" data-count="2">2</div>
+                    <div class="trust__label" data-i18n="trust_facility">Fasilitas Produksi</div>
+                </div>
+                <div class="trust__item reveal" data-delay="3">
+                    <div class="trust__num trust__num--text">FOB · CIF</div>
+                    <div class="trust__label" data-i18n="trust_terms">Ekspor ke seluruh dunia</div>
+                </div>
             </div>
-        </div>
-    </nav>
+        </section>
 
-    <!-- Hero Section -->
-    <!-- Hero Section -->
-    <header id="hero" class="h-screen flex items-center justify-center pt-20 relative bg-gray-900">
-        <!-- 🎥 VIDEO BACKGROUND -->
-        <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0"
-            id="heroVideo"
-            poster="https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=2070&auto=format&fit=crop">
-            <source src="video/real-main%20.mp4" type="video/mp4">
-            Browser Anda tidak mendukung tag video.
-        </video>
-
-        <!-- Loading Indicator -->
-        <div id="videoLoading" class="absolute inset-0 flex items-center justify-center z-0 bg-gray-900">
-            <div class="text-white text-center">
-                <i class="fa-solid fa-circle-notch fa-spin text-4xl mb-4"></i>
-                <p>Loading video...</p>
-                <p class="text-sm mt-2">Jika terlalu lama, file mungkin terlalu besar</p>
-            </div>
-        </div>
-
-        <!-- Fallback Background -->
-        <div id="videoFallback" class="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0"
-            style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=2070&auto=format&fit=crop'); display: none;">
-        </div>
-
-        <!-- Overlay -->
-        <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40 z-0 pointer-events-none"></div>
-
-        <div class="text-center px-4 max-w-4xl z-10 relative">
-            <h2 class="text-yellow-400 font-medium tracking-widest uppercase mb-4 text-sm md:text-lg animate-pulse"
-                data-i18n="hero_sub">Jadilah Bagian dari Perjalanan</h2>
-            <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight drop-shadow-lg"
-                data-i18n="hero_title">Murni. Sederhana. Indah</h1>
-        </div>
-
-
-    </header>
-
-    <script>
-        // Video debugging
-        document.addEventListener('DOMContentLoaded', function () {
-            const video = document.getElementById('heroVideo');
-            const loading = document.getElementById('videoLoading');
-            const fallback = document.getElementById('videoFallback');
-
-            console.log('🎥 Video element loaded');
-            console.log('Video src:', video.querySelector('source').src);
-
-            function handleVideoLoad() {
-                console.log('✅ Video data loaded successfully!');
-                setTimeout(() => {
-                    loading.style.display = 'none';
-                }, 500);
-            }
-
-            // Check if video loads
-            if (video.readyState >= 2) {
-                handleVideoLoad();
-            } else {
-                video.addEventListener('loadeddata', handleVideoLoad);
-            }
-
-            video.addEventListener('error', function (e) {
-                console.error('❌ Video error:', video.error);
-                console.log('Error code:', video.error?.code);
-
-                loading.innerHTML = `
-            <div class="text-red-400">
-                <i class="fa-solid fa-triangle-exclamation text-4xl mb-4"></i>
-                <p>Video gagal dimuat</p>
-                <p class="text-sm mt-2">Menggunakan background fallback...</p>
-            </div>
-        `;
-
-                setTimeout(() => {
-                    loading.style.display = 'none';
-                    fallback.style.display = 'block';
-                }, 2000);
-            });
-
-            // Timeout jika video terlalu lama
-            setTimeout(() => {
-                if (loading.style.display !== 'none' && video.readyState < 2) {
-                    console.warn('⚠️ Video loading timeout (>10s)');
-                    console.log('Mungkin file terlalu besar atau koneksi lambat');
-                }
-            }, 10000);
-        });
-    </script>
-
-    <!-- Sajiva Story Section -->
-    <section id="sajiva-story" class="py-20 md:py-32 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <!-- Text Content -->
-                <div class="order-2 lg:order-1">
-                    <h3 class="text-sajiva-earth font-semibold tracking-wider uppercase mb-2">The Origin</h3>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8" data-i18n="story_title">Mengapa
-                        Sajiva? Apa itu Sajiva?</h2>
-
-                    <div class="space-y-6 text-gray-600 leading-relaxed text-lg">
-                        <p data-i18n="story_p1">Dari suburnya Tanah Indonesia, kami menghadirkan produk berkualitas
-                            terbaik langsung dari petani nusantara untuk memenuhi kebutuhan konsumen akan produk yang
-                            segar, alami, dan terpercaya.</p>
-                        <p data-i18n="story_p2">Kami membangun win-win solution yang tidak hanya menghadirkan produk
-                            terbaik bagi konsumen, tetapi juga membantu membawa petani ke hilir — menciptakan nilai
-                            tambah, pengolahan, hingga akses pasar yang lebih luas bagi petani Indonesia.</p>
-                        <blockquote class="border-l-4 border-sajiva-green pl-4 italic font-medium text-gray-800 my-8"
-                            data-i18n="story_quote">
-                            "Kami persembahkan <span
-                                class="bg-yellow-200 text-sajiva-dark px-1.5 py-0.5 rounded font-semibold">mahakarya
-                                petani nusantara untuk anda</span>."
-                        </blockquote>
-                        <p class="font-semibold" data-i18n="story_sign">Sincerely with love,<br><span
-                                class="text-sajiva-green">Founders</span></p>
+        <!-- Story -->
+        <section class="section" id="sajiva-story">
+            <div class="wrap story__grid">
+                <div class="story__text">
+                    <span class="eyebrow reveal">The Origin</span>
+                    <h2 class="display story__title reveal" data-i18n="story_title">Mengapa Sajiva? Apa itu Sajiva?</h2>
+                    <div class="story__body">
+                        <p class="reveal" data-i18n="story_p1">Dari suburnya Tanah Indonesia, kami menghadirkan produk
+                            berkualitas terbaik langsung dari petani nusantara untuk memenuhi kebutuhan konsumen akan
+                            produk yang segar, alami, dan terpercaya.</p>
+                        <p class="reveal" data-i18n="story_p2">Kami membangun win-win solution yang tidak hanya
+                            menghadirkan produk terbaik bagi konsumen, tetapi juga membantu membawa petani ke hilir —
+                            menciptakan nilai tambah, pengolahan, hingga akses pasar yang lebih luas bagi petani
+                            Indonesia.</p>
                     </div>
+                    <blockquote class="story__quote reveal" data-i18n="story_quote">"Kami persembahkan
+                        <span>mahakarya petani nusantara untuk anda</span>."</blockquote>
+                    <p class="story__sign reveal"><span data-i18n="story_sign">Sincerely with love,</span><br><span>Founders</span></p>
+                    <a href="pdf/SAJIVA-JOURNEY-1.pdf" download="SAJIVA-JOURNEY-1.pdf" class="btn btn--dark reveal">
+                        <i class="fa-solid fa-download"></i><span data-i18n="read_ourstory">Unduh cerita kami</span>
+                    </a>
                 </div>
 
-                <!-- Visual Content -->
-                <div class="order-1 lg:order-2 relative">
-                    <div class="relative z-10 rounded-2xl overflow-hidden catalog-shadow">
-                        <!-- Mockup Catalog Image -->
+                <div class="story__visual reveal" data-delay="1">
+                    <div class="story__frame">
                         <img src="cover/Exporter Pertanian Jabodetabek- Exporter Rempah Bogor - Exporter  Rempah Makassar - Exporter Kopi Jabodetabek.jpeg"
                             alt="Exporter Pertanian Jabodetabek- Exporter Rempah Bogor - Exporter  Rempah Makassar - Exporter Kopi Jabodetabek sajiva catalog"
-                            class="w-full h-auto object-cover aspect-[4/5] hover:scale-105 transition-transform duration-700">
-
-                        <!-- Overlay Download Button -->
-                        <div
-                            class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                            <a href="pdf/SAJIVA-JOURNEY-1.pdf" download="SAJIVA-JOURNEY-1.pdf"
-                                class="bg-white text-sajiva-green flex items-center gap-3 px-6 py-3 rounded-full font-bold shadow-2xl hover:bg-sajiva-green hover:text-white transition-colors">
-                                <i class="fa-solid fa-download"></i>
-                                <span data-i18n="read_ourstory">Unduh cerita kami</span>
-                            </a>
-                        </div>
+                            loading="lazy">
                     </div>
-                    <!-- Decorative element -->
-                    <div
-                        class="absolute -bottom-10 -left-10 w-40 h-40 bg-sajiva-sand rounded-full -z-10 blur-2xl opacity-60">
+                    <div class="story__badge">
+                        <i class="fa-solid fa-seedling"></i>
+                        <div><strong data-i18n="badge_title">Direct from origin</strong><small
+                                data-i18n="badge_sub">Makassar &amp; Bogor, Indonesia</small></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Community Impact Section -->
-    <section id="community-impact" class="py-20 md:py-32 bg-sajiva-sand/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-sm font-bold text-sajiva-earth tracking-widest uppercase mb-2">Be Part of the Journey
-                </h2>
-                <h3 class="text-3xl md:text-5xl font-bold text-gray-900" data-i18n="impact_headline">Dampak adalah Tren
-                    Baru</h3>
-            </div>
+        <!-- Products -->
+        <section class="section products" id="be-better">
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow reveal" data-i18n="products_eyebrow">Komoditas</span>
+                        <h2 class="display reveal" data-i18n="better_title">Our Product</h2>
+                    </div>
+                    <p class="reveal" data-delay="1" data-i18n="products_desc">Pasokan bulk dengan kualitas konsisten,
+                        dokumen ekspor lengkap, dan sampel tersedia sebelum pemesanan.</p>
+                </div>
 
-            <div class="grid lg:grid-cols-12 gap-12 items-start">
-
-                <!-- Video / Main Visual (Left 7 cols) -->
-                <div class="lg:col-span-7 space-y-8">
-                    <!-- Video Thumbnail with Link -->
-                    <a href="https://youtube.com/shorts/NyNj-4JWuRI?si=TwTyyksSCtAQIxKz" target="_blank"
-                        rel="noopener noreferrer"
-                        class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl block group">
-                        <!-- Cover Image -->
-                        <img src="cover/Indonesian green coffee beans supplier - Indonesian cloves (Lal Pari) export - Clove bud oil wholesale - Cardamom essential oil wholesale .png"
-                            alt="Indonesian green coffee beans supplier - Indonesian cloves (Lal Pari) export - Clove bud oil wholesale - Cardamom essential oil wholesale-social impact"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <!-- Dark overlay -->
-                        <div
-                            class="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-300">
-                        </div>
-                        <!-- YouTube Play Button -->
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div
-                                class="w-20 h-20 bg-red-600 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl group-hover:scale-110 transition-transform duration-300 pl-1">
-                                <i class="fa-brands fa-youtube"></i>
-                            </div>
-                        </div>
-                        <!-- Bottom label -->
-                        <div
-                            class="absolute bottom-4 left-4 text-white font-bold tracking-widest text-sm bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">
-                            ▶ Tonton di YouTube
+                <div class="products__grid">
+                    <a href="cardamom-page.html" class="product reveal">
+                        <img src="cover/Exporter Rempah Jabodetabek- Exporter Rempah Bogor - Exporter  Rempah Makassar - organic cardamom.png"
+                            alt="B2B Wholesale Organic Cardamom Supplier Makassar - Exporter Rempah Jabodetabek- Exporter Rempah Bogor - Exporter  Rempah Makassar - organic cardamom"
+                            loading="lazy">
+                        <span class="product__index">01</span>
+                        <span class="product__origin">Makassar</span>
+                        <div class="product__body">
+                            <h3 data-i18n="card_1">Organic Cardamom</h3>
+                            <span class="product__more"><span data-i18n="product_more">Lihat detail</span><i
+                                    class="fa-solid fa-arrow-right"></i></span>
                         </div>
                     </a>
-
-                    <!-- Social Impact Stats -->
-                    <div class="bg-white rounded-2xl p-6 shadow-md border-l-4 border-sajiva-green">
-                        <h4 class="font-bold text-gray-900 text-lg mb-4">Social Impact</h4>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-sajiva-sand/30 rounded-xl p-4 text-center">
-                                <div class="text-4xl font-bold text-sajiva-green mb-1">52</div>
-                                <div class="text-gray-600 font-medium text-sm" data-i18n="stat_farmer">Mitra Petani
-                                </div>
-                            </div>
-                            <div class="bg-sajiva-sand/30 rounded-xl p-4 text-center">
-                                <div class="text-4xl font-bold text-sajiva-green mb-1">4</div>
-                                <div class="text-gray-600 font-medium text-sm" data-i18n="stat_village">Desa Mitra</div>
-                            </div>
+                    <a href="essential-oil.html" class="product reveal" data-delay="1">
+                        <img src="cover/Exporter Clove Oil - Exporter Rempah Bogor - Exporter  Rempah Makassar - organic clove.png"
+                            alt="Bulk Clove Essential Oil Exporter - Pabrik Ekspor Rempah Jabodetabek Bogor - Exporter Clove Oil - Exporter Rempah Bogor - Exporter  Rempah Makassar - organic clove"
+                            loading="lazy">
+                        <span class="product__index">02</span>
+                        <span class="product__origin">Distilled</span>
+                        <div class="product__body">
+                            <h3 data-i18n="card_2">Clove and Cardamom essential oil</h3>
+                            <span class="product__more"><span data-i18n="product_more">Lihat detail</span><i
+                                    class="fa-solid fa-arrow-right"></i></span>
                         </div>
-                        <p class="text-xs text-gray-400 italic mt-3 text-center" data-i18n="stat_counting">Dan terus
-                            bertambah...</p>
-                    </div>
+                    </a>
+                    <a href="vco-page.html" class="product reveal" data-delay="2">
+                        <img src="cover/Buy bulk organic cold-pressed VCO Indonesia - Indonesian virgin coconut oil bulk.png"
+                            alt="Buy bulk organic cold-pressed VCO Indonesia - Indonesian virgin coconut oil bulk"
+                            loading="lazy">
+                        <span class="product__index">03</span>
+                        <span class="product__origin">Cold-pressed</span>
+                        <div class="product__body">
+                            <h3 data-i18n="card_3">Virgin Coconut Oil (VCO)</h3>
+                            <span class="product__more"><span data-i18n="product_more">Lihat detail</span><i
+                                    class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="cibulao-coffee.html" class="product reveal" data-delay="3">
+                        <img src="cover/High cupping score indonesian fine robusta bulk - Buy bulk Indonesian fine robusta coffee.png"
+                            alt="Distributor Kopi B2B Bogor Jawa Tengah - Green Beans Cibulao Arabica Robusta Bulk-High cupping score indonesian fine robusta bulk - Buy bulk Indonesian fine robusta coffee"
+                            loading="lazy">
+                        <span class="product__index">04</span>
+                        <span class="product__origin">Bogor</span>
+                        <div class="product__body">
+                            <h3 data-i18n="card_4">Shade Coffee Cibulao</h3>
+                            <span class="product__more"><span data-i18n="product_more">Lihat detail</span><i
+                                    class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
                 </div>
+            </div>
+        </section>
 
-                <!-- Text (Right 5 cols) -->
-                <div class="lg:col-span-5 flex flex-col justify-center">
-
-                    <!-- Narrative -->
-                    <div class="bg-white p-8 rounded-2xl shadow-lg">
-                        <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="impact_p1">Hari ini, kecantikan tidak
-                            lagi hanya diukur dari penampilan—tetapi diukur dari dampak.<br>Dampak adalah tren baru.</p>
-                        <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="impact_p2">Di Sajiva, setiap pembelian
-                            menjadi bagian dari gerakan yang lebih besar: memberdayakan petani, menghormati kekayaan
-                            bumi, dan menciptakan jalan yang lebih adil dari tanah hingga ke masyarakat. Dengan
-                            menghubungkan petani secara langsung kepada Anda dan memotong perantara yang tidak perlu,
-                            kami membantu komunitas petani berkembang sekaligus menghantarkan karunia alam yang paling
-                            murni ke tangan Anda.</p>
-                        <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="impact_p3">Karena kecantikan sejati
-                            saat ini adalah tentang kesadaran, makna, dan perubahan nyata.<br>Ketika Anda memilih
-                            dampak, Anda tidak hanya memancarkan pesona dari luar—tetapi Anda memancarkan tujuan mulia
-                            dari dalam.</p>
-                        <p class="font-bold text-gray-900 mb-0">- Sajiva</p>
+        <!-- Process -->
+        <section class="section" id="process">
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow reveal" data-i18n="process_eyebrow">Cara Kami Bekerja</span>
+                        <h2 class="display reveal" data-i18n="process_title">Dari kebun ke pelabuhan</h2>
+                    </div>
+                    <p class="reveal" data-delay="1" data-i18n="process_desc">Satu rantai pasok yang kami kelola
+                        langsung, sehingga setiap pengiriman dapat ditelusuri hingga ke petaninya.</p>
+                </div>
+                <div class="process__grid">
+                    <div class="step reveal">
+                        <span class="step__no">01</span><i class="fa-solid fa-seedling"></i>
+                        <h3 data-i18n="step1_title">Sourcing langsung</h3>
+                        <p data-i18n="step1_text">Bermitra langsung dengan petani di desa-desa mitra, tanpa perantara.</p>
+                    </div>
+                    <div class="step reveal" data-delay="1">
+                        <span class="step__no">02</span><i class="fa-solid fa-hand-holding-heart"></i>
+                        <h3 data-i18n="step2_title">Pengolahan & QC</h3>
+                        <p data-i18n="step2_text">Sortasi, pengeringan, dan uji kualitas di fasilitas Makassar & Bogor.</p>
+                    </div>
+                    <div class="step reveal" data-delay="2">
+                        <span class="step__no">03</span><i class="fa-solid fa-box-open"></i>
+                        <h3 data-i18n="step3_title">Pengemasan ekspor</h3>
+                        <p data-i18n="step3_text">Dikemas sesuai standar ekspor dan spesifikasi pembeli.</p>
+                    </div>
+                    <div class="step reveal" data-delay="3">
+                        <span class="step__no">04</span><i class="fa-solid fa-ship"></i>
+                        <h3 data-i18n="step4_title">Pengiriman FOB / CIF</h3>
+                        <p data-i18n="step4_text">Dokumen lengkap dan pengiriman ke pelabuhan tujuan Anda.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Be Better With Us Section -->
-    <section id="be-better" class="py-20 md:py-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold text-sajiva-green mb-4" data-i18n="better_title">Our Product
-                </h2>
-                <div class="w-24 h-1 bg-sajiva-earth mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Card 1 -->
-                <a href="cardamom-page.html" class="block">
-                    <div class="bg-white rounded-3xl overflow-hidden card-hover shadow-lg border border-gray-100 group">
-                        <div class="h-64 overflow-hidden relative">
-                            <img src="cover/Exporter Rempah Jabodetabek- Exporter Rempah Bogor - Exporter  Rempah Makassar - organic cardamom.png"
-                                alt="B2B Wholesale Organic Cardamom Supplier Makassar - Exporter Rempah Jabodetabek- Exporter Rempah Bogor - Exporter  Rempah Makassar - organic cardamom"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        </div>
-                        <div class="p-8 text-center bg-sajiva-sand/10">
-                            <h3 class="text-xl font-semibold text-gray-900" data-i18n="card_1">Organic Cardamom</h3>
-                        </div>
-                    </div>
+        <!-- Impact -->
+        <section class="section impact" id="community-impact">
+            <div class="wrap impact__grid">
+                <a href="https://youtube.com/shorts/NyNj-4JWuRI?si=TwTyyksSCtAQIxKz" target="_blank"
+                    rel="noopener noreferrer" class="impact__film reveal">
+                    <img src="cover/Indonesian green coffee beans supplier - Indonesian cloves (Lal Pari) export - Clove bud oil wholesale - Cardamom essential oil wholesale .png"
+                        alt="Indonesian green coffee beans supplier - Indonesian cloves (Lal Pari) export - Clove bud oil wholesale - Cardamom essential oil wholesale-social impact"
+                        loading="lazy">
+                    <span class="impact__play"><i class="fa-solid fa-play"></i><span data-i18n="impact_watch">Tonton di
+                            YouTube</span></span>
                 </a>
 
-                <!-- Card 2 -->
-                <a href="essential-oil.html" class="block">
-                    <div class="bg-white rounded-3xl overflow-hidden card-hover shadow-lg border border-gray-100 group">
-                        <div class="h-64 overflow-hidden relative">
-                            <img src="cover/Exporter Clove Oil - Exporter Rempah Bogor - Exporter  Rempah Makassar - organic clove.png"
-                                alt="Bulk Clove Essential Oil Exporter - Pabrik Ekspor Rempah Jabodetabek Bogor - Exporter Clove Oil - Exporter Rempah Bogor - Exporter  Rempah Makassar - organic clove"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        </div>
-                        <div class="p-8 text-center bg-sajiva-sand/10">
-                            <h3 class="text-xl font-semibold text-gray-900" data-i18n="card_2">Clove and Cardamom
-                                essential oil</h3>
-                        </div>
+                <div class="impact__text">
+                    <span class="eyebrow reveal">Be Part of the Journey</span>
+                    <h2 class="display impact__title reveal" data-i18n="impact_headline">Dampak adalah Tren Baru</h2>
+                    <p class="reveal" data-i18n="impact_p1">Hari ini, kecantikan tidak lagi hanya diukur dari
+                        penampilan—tetapi diukur dari dampak.<br>Dampak adalah tren baru.</p>
+                    <p class="reveal" data-i18n="impact_p2">Di Sajiva, setiap pembelian menjadi bagian dari gerakan yang
+                        lebih besar: memberdayakan petani, menghormati kekayaan bumi, dan menciptakan jalan yang lebih
+                        adil dari tanah hingga ke masyarakat.</p>
+                    <p class="reveal" data-i18n="impact_p3">Karena kecantikan sejati saat ini adalah tentang kesadaran,
+                        makna, dan perubahan nyata.</p>
+                    <div class="impact__sign reveal">— Sajiva</div>
+
+                    <div class="impact__stats reveal">
+                        <div><strong data-count="52">52</strong><span data-i18n="stat_farmer">Mitra Petani</span></div>
+                        <div><strong data-count="4">4</strong><span data-i18n="stat_village">Desa Mitra</span></div>
                     </div>
-                </a>
-
-                <!-- Card 3 -->
-                <a href="vco-page.html" class="block">
-                    <div class="bg-white rounded-3xl overflow-hidden card-hover shadow-lg border border-gray-100 group">
-                        <div class="h-64 overflow-hidden relative">
-                            <img src="cover/Buy bulk organic cold-pressed VCO Indonesia - Indonesian virgin coconut oil bulk.png"
-                                alt="Buy bulk organic cold-pressed VCO Indonesia - Indonesian virgin coconut oil bulk"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        </div>
-                        <div class="p-8 text-center bg-sajiva-sand/10">
-                            <h3 class="text-xl font-semibold text-gray-900" data-i18n="card_3">Virgin Coconut Oil (VCO)
-                            </h3>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Card 4 -->
-                <a href="cibulao-coffee.html" class="block">
-                    <div class="bg-white rounded-3xl overflow-hidden card-hover shadow-lg border border-gray-100 group">
-                        <div class="h-64 overflow-hidden relative">
-                            <img src="cover/High cupping score indonesian fine robusta bulk - Buy bulk Indonesian fine robusta coffee.png"
-                                alt="Distributor Kopi B2B Bogor Jawa Tengah - Green Beans Cibulao Arabica Robusta Bulk-High cupping score indonesian fine robusta bulk - Buy bulk Indonesian fine robusta coffee"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        </div>
-                        <div class="p-8 text-center bg-sajiva-sand/10">
-                            <h3 class="text-xl font-semibold text-gray-900" data-i18n="card_4">Shade Coffee Cibulao
-                            </h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Footer & Contact Section -->
-    <footer id="contact" class="bg-sajiva-green text-white pt-20 pb-10 rounded-t-[3rem] mt-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <div class="grid lg:grid-cols-3 gap-12 mb-16">
-                <!-- Info Column -->
-                <div class="space-y-8">
-                    <div class="flex items-center gap-2">
-                        <img src="logos/sajiva-logo-buletan.jpeg" alt="Sajiva Logo"
-                            class="w-10 h-10 object-cover rounded-full shadow-md border-2 border-yellow-400">
-                        <span class="font-bold text-3xl tracking-tight">Sajiva</span>
-                    </div>
-
-                    <div>
-                        <h4 class="font-bold text-yellow-400 mb-4 text-lg" data-i18n="footer_factory">Our Factory:</h4>
-                        <ol class="list-decimal list-inside space-y-2 text-white/80">
-                            <li>Karunrung, Kec. Rappocini, Makassar, Sulawesi Selatan.</li>
-                            <li>Dramaga, Kec. Dramaga, Bogor, Jawa Barat.</li>
-                        </ol>
-                    </div>
-
-                    <div>
-                        <h4 class="font-bold text-yellow-400 mb-4 text-lg" data-i18n="footer_weblist">WEB LIST:</h4>
-                        <ul class="space-y-2 text-white/80">
-                            <li class="flex items-center gap-2">
-                                <i class="fa-solid fa-globe w-5"></i>
-                                <span data-i18n="footer_mainsite">Main Site</span>: <a
-                                    href="https://sajivaagrolestari.com" target="_blank" rel="noopener noreferrer"
-                                    class="hover:text-white underline decoration-transparent hover:decoration-white transition-all">sajivaagrolestari.com</a>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <i class="fa-solid fa-heart w-5"></i>
-                                <span data-i18n="footer_socialwork">Social Work</span>: <a href="#"
-                                    class="hover:text-white underline decoration-transparent hover:decoration-white transition-all cursor-default">sajiva-care.org
-                                    (comingsoon)</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <p class="impact__counting reveal" data-i18n="stat_counting">Dan terus bertambah...</p>
                 </div>
+            </div>
+        </section>
 
-                <!-- Contact & Social Column -->
-                <div class="space-y-8">
+        <!-- Contact -->
+        <section class="section cta" id="contact">
+            <div class="wrap" style="position:relative;z-index:2">
+                <div class="cta__card reveal">
+                    <video muted loop playsinline preload="none" poster="video/hero-desktop-poster.jpg"
+                        data-src="video/hero-desktop.mp4" id="ctaVideo"></video>
                     <div>
-                        <h4 class="font-bold text-yellow-400 mb-4 text-lg" data-i18n="footer_contact_title">Contact Us:
-                        </h4>
-                        <ul class="space-y-4 text-white/80">
-                            <li class="flex items-center gap-3">
-                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sajivaagrolestari@gmail.com&su=Inquiry%20-%20Sajiva%20Agro"
-                                    target="_blank" rel="noopener noreferrer"
-                                    class="flex items-center gap-3 hover:text-yellow-400 transition-colors">
-                                    <div class="bg-white/10 p-3 rounded-full"><i class="fa-solid fa-envelope"></i></div>
-                                    <span>sajivaagrolestari@gmail.com</span>
-                                </a>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <div class="bg-white/10 p-3 rounded-full"><i class="fa-brands fa-whatsapp text-lg"></i>
-                                </div>
-                                <span>+62 887-4373-12018</span>
-                            </li>
-                        </ul>
+                        <span class="cta__badge"><i class="fa-solid fa-file-invoice"></i><span
+                                data-i18n="rfq_badge">Fast Quotation Response</span></span>
+                        <h2 class="display cta__title" data-i18n="form_title">Contact Us Now, and Request the Quotation
+                            Here</h2>
+                        <p class="cta__desc" data-i18n="form_desc">Silakan klik alamat email di bawah ini untuk langsung
+                            membuka draf permintaan quotation di Gmail Anda dan terhubung langsung dengan tim Sajiva
+                            Agro.</p>
                     </div>
-
-                    <div>
-                        <h4 class="font-bold text-yellow-400 mb-4 text-lg" data-i18n="footer_connect">Let's Connect:
-                        </h4>
-                        <div class="flex gap-4">
-                            <a href="https://www.instagram.com/sajiva.agro" target="_blank" rel="noopener noreferrer"
-                                class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-yellow-400 hover:text-sajiva-green transition-all text-xl"><i
-                                    class="fa-brands fa-instagram"></i></a>
-                            <a href="#"
-                                class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-yellow-400 hover:text-sajiva-green transition-all text-xl"><i
-                                    class="fa-brands fa-facebook-f"></i></a>
-                            <a href="https://www.tiktok.com/@sajiva.agro" target="_blank" rel="noopener noreferrer"
-                                class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-yellow-400 hover:text-sajiva-green transition-all text-xl"><i
-                                    class="fa-brands fa-tiktok"></i></a>
-                            <a href="javascript:void(0)"
-                                onclick="navigator.clipboard.writeText('@Dickyadisaputra'); alert('WeChat ID @Dickyadisaputra telah disalin ke papan klip / WeChat ID @Dickyadisaputra copied to clipboard!')"
-                                title="WeChat: @Dickyadisaputra"
-                                class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-yellow-400 hover:text-sajiva-green transition-all text-xl"><i
-                                    class="fa-brands fa-weixin"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quotation Request Column -->
-                <div
-                    class="bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-sm flex flex-col justify-between">
-                    <div>
-                        <div
-                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-400/20 text-yellow-300 text-xs font-semibold mb-4 border border-yellow-400/30">
-                            <i class="fa-solid fa-file-invoice"></i>
-                            <span data-i18n="rfq_badge">Fast Quotation Response</span>
-                        </div>
-                        <h4 class="font-bold text-2xl mb-3 text-white leading-snug" data-i18n="form_title">Contact Us
-                            Now, and Request the Quotation Here</h4>
-                        <p class="text-white/80 text-sm leading-relaxed mb-6" data-i18n="form_desc">
-                            Silakan klik alamat email di bawah ini untuk langsung membuka draf permintaan quotation di
-                            Gmail Anda dan terhubung langsung dengan tim Sajiva Agro.
-                        </p>
-                    </div>
-
-                    <div class="space-y-3">
-                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sajivaagrolestari@gmail.com&su=Request%20for%20Quotation%20-%20Sajiva%20Agro&body=Dear%20Sajiva%20Agro%20Team,%0A%0AI%20would%20like%20to%20request%20a%20quotation%20for:%0A-%20Product%20Name:%0A-%20Estimated%20Quantity:%0A-%20Destination%20Port:%0A-%20Company%20Name:%0A%0ALooking%20forward%20to%20your%20response.%0A%0ABest%20regards,"
-                            target="_blank" rel="noopener noreferrer"
-                            class="group w-full bg-yellow-400 hover:bg-white text-sajiva-green font-bold p-4 rounded-2xl transition-all duration-300 shadow-xl flex items-center justify-between">
-                            <div class="flex items-center gap-3 min-w-0">
-                                <div
-                                    class="w-10 h-10 rounded-xl bg-sajiva-green text-yellow-400 flex items-center justify-center text-lg shrink-0 group-hover:scale-110 transition-transform">
-                                    <i class="fa-solid fa-envelope-open-text"></i>
-                                </div>
-                                <div class="text-left min-w-0">
-                                    <div class="text-xs text-sajiva-green/80 font-medium"
-                                        data-i18n="gmail_direct_label">Buka di Gmail (Draft Siap)</div>
-                                    <div class="text-sm md:text-base font-bold truncate">sajivaagrolestari@gmail.com
-                                    </div>
-                                </div>
-                            </div>
-                            <i
-                                class="fa-solid fa-arrow-up-right-from-square text-sajiva-green group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform ml-2 shrink-0"></i>
+                    <div class="cta__side">
+                        <a class="cta__mail"
+                            href="https://mail.google.com/mail/?view=cm&fs=1&to=sajivaagrolestari@gmail.com&su=Request%20for%20Quotation%20-%20Sajiva%20Agro&body=Dear%20Sajiva%20Agro%20Team,%0A%0AI%20would%20like%20to%20request%20a%20quotation%20for:%0A-%20Product%20Name:%0A-%20Estimated%20Quantity:%0A-%20Destination%20Port:%0A-%20Company%20Name:%0A%0ALooking%20forward%20to%20your%20response.%0A%0ABest%20regards,"
+                            target="_blank" rel="noopener noreferrer">
+                            <span><small data-i18n="gmail_direct_label">Buka di Gmail (Draft Siap)</small>
+                                <strong>sajivaagrolestari@gmail.com</strong></span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
-
-                        <div class="flex items-center justify-between text-xs text-white/60 px-2 pt-1">
-                            <span><i class="fa-solid fa-clock mr-1 text-yellow-400"></i> <span
-                                    data-i18n="response_time">Respon cepat &lt; 24 Jam</span></span>
-                            <span><i class="fa-solid fa-shield-halved mr-1 text-yellow-400"></i> Official Email</span>
+                        <a class="cta__wa" href="https://wa.me/62887437312018" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-whatsapp" style="font-size:20px"></i>
+                            <span>+62 887-4373-12018</span>
+                        </a>
+                        <div class="cta__meta">
+                            <span><i class="fa-solid fa-clock"></i><span data-i18n="response_time">Respon cepat &lt; 24
+                                    Jam</span></span>
+                            <span><i class="fa-solid fa-shield-halved"></i>Official Email</span>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <!-- Copyright -->
-            <div class="border-t border-white/20 pt-8 text-center text-white/60 text-sm">
-                &copy; <span id="currentYear"></span> Sajiva Agro. All rights reserved. | Pure. Simple. Beautiful.
+    <footer class="footer">
+        <div class="wrap">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a class="brand" href="#hero">
+                        <img src="logos/sajiva-logo-buletan.jpeg" alt="Sajiva Logo" loading="lazy">
+                        <span class="brand__name">Sajiva<small>Agro Lestari</small></span>
+                    </a>
+                    <p>PT. Sajiva Agro Lestari — B2B coffee, spice, essential oil &amp; VCO exporter from Indonesia.</p>
+                </div>
+
+                <div>
+                    <h4 data-i18n="footer_factory">Our Factory:</h4>
+                    <ol>
+                        <li>Karunrung, Kec. Rappocini, Makassar, Sulawesi Selatan.</li>
+                        <li>Dramaga, Kec. Dramaga, Bogor, Jawa Barat.</li>
+                    </ol>
+                </div>
+
+                <div>
+                    <h4 data-i18n="footer_contact_title">Contact Us:</h4>
+                    <ul>
+                        <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=sajivaagrolestari@gmail.com&su=Inquiry%20-%20Sajiva%20Agro"
+                                target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-envelope"
+                                    style="width:20px"></i>sajivaagrolestari@gmail.com</a></li>
+                        <li><a href="https://wa.me/62887437312018" target="_blank" rel="noopener noreferrer"><i
+                                    class="fa-brands fa-whatsapp" style="width:20px"></i>+62 887-4373-12018</a></li>
+                    </ul>
+                    <h4 data-i18n="footer_weblist" style="margin-top:28px">WEB LIST:</h4>
+                    <ul>
+                        <li><span data-i18n="footer_mainsite">Main Site</span>: <a href="https://sajivaagrolestari.com"
+                                target="_blank" rel="noopener noreferrer">sajivaagrolestari.com</a></li>
+                        <li><span data-i18n="footer_socialwork">Social Work</span>: sajiva-care.org (coming soon)</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 data-i18n="footer_connect">Let's Connect:</h4>
+                    <div class="socials">
+                        <a href="https://www.instagram.com/sajiva.agro" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@sajiva.agro" target="_blank" rel="noopener noreferrer"
+                            aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="javascript:void(0)"
+                            onclick="navigator.clipboard.writeText('@Dickyadisaputra'); alert('WeChat ID @Dickyadisaputra telah disalin ke papan klip / WeChat ID @Dickyadisaputra copied to clipboard!')"
+                            title="WeChat: @Dickyadisaputra" aria-label="WeChat"><i class="fa-brands fa-weixin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <span>&copy; <span id="currentYear"></span> Sajiva Agro. All rights reserved.</span>
+                <span>Pure. Simple. Beautiful.</span>
             </div>
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/62887437312018" target="_blank" rel="noopener noreferrer"
-        class="fixed bottom-6 right-6 z-[9999] group flex items-center gap-3 bg-[#25D366] hover:bg-[#20ba5a] text-white p-3.5 md:p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none"
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/62887437312018" target="_blank" rel="noopener noreferrer" class="wa-float" id="waFloat"
         aria-label="Chat WhatsApp Sajiva" title="Chat WhatsApp Sajiva">
-        <span
-            class="absolute -inset-1 rounded-full bg-[#25D366] opacity-75 animate-ping -z-10 group-hover:opacity-100"></span>
-        <i class="fa-brands fa-whatsapp text-2xl md:text-3xl"></i>
-        <span
-            class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-[200px] transition-all duration-500 ease-in-out font-medium text-sm pr-1"
-            data-i18n="wa_float">
-            Hubungi Kami via WhatsApp
-        </span>
+        <i class="fa-brands fa-whatsapp"></i>
+        <span data-i18n="wa_float">Hubungi Kami via WhatsApp</span>
     </a>
 
-    <!-- JavaScript untuk Fungsionalitas & Multi-bahasa -->
     <script>
-        // Set Current Year in Footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Mobile Menu Toggle
-        const btn = document.getElementById('mobileMenuBtn');
-        const menu = document.getElementById('mobileMenu');
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
+        /* ---------- Hero film ---------- */
+        const hero = document.getElementById('hero');
+        const heroVideo = document.getElementById('heroVideo');
+        const toggle = document.getElementById('videoToggle');
+        const toggleLabel = document.getElementById('videoToggleLabel');
 
-        // Close mobile menu on link click
-        menu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
-
-        // Form Submit Handler (guarded)
-        function handleFormSubmit(e) {
-            if (e && e.preventDefault) e.preventDefault();
-            const successBox = document.getElementById('formSuccess');
-            if (successBox) successBox.classList.remove('hidden');
-            const form = document.getElementById('contactForm');
-            if (form) form.reset();
-            setTimeout(() => {
-                if (successBox) successBox.classList.add('hidden');
-            }, 4000);
+        function pickHeroSource() {
+            const portrait = window.innerHeight > window.innerWidth;
+            return portrait ? heroVideo.dataset.mobile : heroVideo.dataset.desktop;
         }
 
-        // --- TRANSLATION DICTIONARY ---
+        if (!reduceMotion) {
+            heroVideo.src = pickHeroSource();
+            heroVideo.addEventListener('playing', () => hero.classList.add('is-live'), { once: true });
+            heroVideo.play().catch(() => { /* autoplay blocked: poster stays */ });
+        } else {
+            toggle.style.display = 'none';
+        }
+
+        toggle.addEventListener('click', () => {
+            if (heroVideo.paused) {
+                heroVideo.play();
+                toggle.querySelector('i').className = 'fa-solid fa-pause';
+                toggleLabel.textContent = 'Pause';
+                toggle.setAttribute('aria-label', 'Pause video');
+            } else {
+                heroVideo.pause();
+                toggle.querySelector('i').className = 'fa-solid fa-play';
+                toggleLabel.textContent = 'Play';
+                toggle.setAttribute('aria-label', 'Play video');
+            }
+        });
+
+        /* ---------- Intro curtain ---------- */
+        const intro = document.getElementById('intro');
+        let introSeen = false;
+        try { introSeen = sessionStorage.getItem('sajiva_intro') === '1'; } catch (e) { }
+
+        function revealHero() {
+            intro.classList.add('is-done');
+            document.body.classList.remove('is-locked');
+            hero.classList.add('is-revealed');
+            setTimeout(() => intro.remove(), 1300);
+            try { sessionStorage.setItem('sajiva_intro', '1'); } catch (e) { }
+        }
+
+        if (introSeen || reduceMotion) {
+            intro.style.transition = 'none';
+            revealHero();
+        } else {
+            // Wait for the film to be ready, but never longer than ~2.6s
+            const minTime = new Promise(r => setTimeout(r, 1900));
+            const ready = new Promise(r => {
+                if (heroVideo.readyState >= 3) return r();
+                heroVideo.addEventListener('canplay', r, { once: true });
+                setTimeout(r, 2600);
+            });
+            Promise.all([minTime, ready]).then(revealHero);
+        }
+
+        /* Split hero title into words for the reveal */
+        function splitHeroTitle() {
+            const t = document.getElementById('heroTitle');
+            const words = t.textContent.trim().split(/\s+/);
+            t.innerHTML = words.map((w, i) =>
+                `<span class="w"><span style="transition-delay:${0.15 + i * 0.12}s">${w}</span></span>`
+            ).join(' ');
+        }
+
+        /* ---------- Navigation ---------- */
+        const nav = document.getElementById('nav');
+        const waFloat = document.getElementById('waFloat');
+        function onScroll() {
+            const y = window.scrollY;
+            nav.classList.toggle('is-solid', y > window.innerHeight * 0.6);
+            waFloat.classList.toggle('is-visible', y > window.innerHeight * 0.5);
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        // Mobile menu (ids kept from the original page)
+        const btn = document.getElementById('mobileMenuBtn');
+        const menu = document.getElementById('mobileMenu');
+        const closeBtn = document.getElementById('mobileMenuClose');
+        function setMenu(open) {
+            menu.classList.toggle('is-open', open);
+            menu.classList.toggle('hidden', !open);
+            menu.setAttribute('aria-hidden', String(!open));
+            btn.setAttribute('aria-expanded', String(open));
+            document.body.classList.toggle('is-locked', open);
+        }
+        btn.addEventListener('click', () => setMenu(true));
+        closeBtn.addEventListener('click', () => setMenu(false));
+        menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+
+        /* ---------- Scroll reveals & counters ---------- */
+        function countUp(el) {
+            const target = parseInt(el.dataset.count, 10);
+            if (isNaN(target) || reduceMotion) return;
+            const start = performance.now();
+            const dur = 1600;
+            (function tick(now) {
+                const p = Math.min((now - start) / dur, 1);
+                el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+                if (p < 1) requestAnimationFrame(tick);
+            })(start);
+        }
+
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (!e.isIntersecting) return;
+                e.target.classList.add('is-in');
+                e.target.querySelectorAll('[data-count]').forEach(countUp);
+                if (e.target.matches('[data-count]')) countUp(e.target);
+                io.unobserve(e.target);
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // Background film in the contact card: load only when it scrolls near
+        const ctaVideo = document.getElementById('ctaVideo');
+        if (!reduceMotion) {
+            new IntersectionObserver((entries, obs) => {
+                if (entries[0].isIntersecting) {
+                    ctaVideo.src = ctaVideo.dataset.src;
+                    ctaVideo.play().catch(() => { });
+                    obs.disconnect();
+                }
+            }, { rootMargin: '200px' }).observe(ctaVideo);
+        }
+
+        /* ---------- Translations ---------- */
         const translations = {
             id: {
                 nav_story: "Sajiva Story",
@@ -812,44 +2403,124 @@
             }
         };
 
-        // Function to update content based on language
-        function setLanguage(lang) {
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
-                    // Check if it's an input/textarea placeholder or regular text
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        el.placeholder = translations[lang][key];
-                    } else {
-                        el.innerHTML = translations[lang][key];
-                    }
-                }
-            });
+        // Copy for the new homepage sections
+        const extra = {
+            id: {
+                hero_desc: "Kopi, rempah, minyak atsiri, dan VCO langsung dari petani nusantara — untuk importir, roastery, dan produsen di seluruh dunia.",
+                hero_scroll: "Gulir",
+                trust_facility: "Fasilitas Produksi",
+                trust_terms: "Ekspor ke seluruh dunia",
+                badge_title: "Langsung dari asal",
+                badge_sub: "Makassar & Bogor, Indonesia",
+                products_eyebrow: "Komoditas",
+                products_desc: "Pasokan bulk dengan kualitas konsisten, dokumen ekspor lengkap, dan sampel tersedia sebelum pemesanan.",
+                product_more: "Lihat detail",
+                process_eyebrow: "Cara Kami Bekerja",
+                process_title: "Dari kebun ke pelabuhan",
+                process_desc: "Satu rantai pasok yang kami kelola langsung, sehingga setiap pengiriman dapat ditelusuri hingga ke petaninya.",
+                step1_title: "Sourcing langsung",
+                step1_text: "Bermitra langsung dengan petani di desa-desa mitra, tanpa perantara.",
+                step2_title: "Pengolahan & QC",
+                step2_text: "Sortasi, pengeringan, dan uji kualitas di fasilitas Makassar & Bogor.",
+                step3_title: "Pengemasan ekspor",
+                step3_text: "Dikemas sesuai standar ekspor dan spesifikasi pembeli.",
+                step4_title: "Pengiriman FOB / CIF",
+                step4_text: "Dokumen lengkap dan pengiriman ke pelabuhan tujuan Anda.",
+                impact_watch: "Tonton di YouTube"
+            },
+            en: {
+                hero_desc: "Coffee, spices, essential oils and VCO sourced directly from Indonesian farmers — for importers, roasteries and manufacturers worldwide.",
+                hero_scroll: "Scroll",
+                trust_facility: "Production Facilities",
+                trust_terms: "Export worldwide",
+                badge_title: "Direct from origin",
+                badge_sub: "Makassar & Bogor, Indonesia",
+                products_eyebrow: "Commodities",
+                products_desc: "Bulk supply with consistent quality, complete export documents, and samples available before you order.",
+                product_more: "View details",
+                process_eyebrow: "How We Work",
+                process_title: "From farm to port",
+                process_desc: "One supply chain we run ourselves, so every shipment can be traced back to its farmers.",
+                step1_title: "Direct sourcing",
+                step1_text: "We partner directly with farmers in our sourcing villages — no middlemen.",
+                step2_title: "Processing & QC",
+                step2_text: "Sorting, drying and quality testing at our Makassar & Bogor facilities.",
+                step3_title: "Export packing",
+                step3_text: "Packed to export standards and your buyer specifications.",
+                step4_title: "FOB / CIF shipping",
+                step4_text: "Complete documentation and delivery to your port of destination.",
+                impact_watch: "Watch on YouTube"
+            },
+            zh: {
+                hero_desc: "咖啡、香料、精油和初榨椰子油，直接来自印尼农民——服务全球进口商、烘焙商和制造商。",
+                hero_scroll: "向下滚动",
+                trust_facility: "生产设施",
+                trust_terms: "出口至全球",
+                badge_title: "原产地直供",
+                badge_sub: "印尼 望加锡 & 茂物",
+                products_eyebrow: "商品",
+                products_desc: "稳定品质的大宗供应，完整的出口文件，下单前可提供样品。",
+                product_more: "查看详情",
+                process_eyebrow: "我们的流程",
+                process_title: "从农场到港口",
+                process_desc: "由我们直接管理的供应链，每批货物都可追溯到农户。",
+                step1_title: "直接采购",
+                step1_text: "与合作村庄的农民直接合作，没有中间商。",
+                step2_title: "加工与质检",
+                step2_text: "在望加锡和茂物工厂进行分拣、干燥和质量检测。",
+                step3_title: "出口包装",
+                step3_text: "按出口标准及买家规格包装。",
+                step4_title: "FOB / CIF 运输",
+                step4_text: "完整单证，运送至您的目的港。",
+                impact_watch: "在 YouTube 观看"
+            },
+            ar: {
+                hero_desc: "قهوة وتوابل وزيوت عطرية وزيت جوز الهند البكر مباشرة من المزارعين الإندونيسيين — للمستوردين والمحامص والمصنّعين حول العالم.",
+                hero_scroll: "مرّر للأسفل",
+                trust_facility: "منشآت الإنتاج",
+                trust_terms: "تصدير لجميع أنحاء العالم",
+                badge_title: "مباشرة من المصدر",
+                badge_sub: "ماكاسار وبوجور، إندونيسيا",
+                products_eyebrow: "السلع",
+                products_desc: "توريد بكميات كبيرة بجودة ثابتة، ووثائق تصدير كاملة، وعينات متاحة قبل الطلب.",
+                product_more: "عرض التفاصيل",
+                process_eyebrow: "كيف نعمل",
+                process_title: "من المزرعة إلى الميناء",
+                process_desc: "سلسلة توريد نديرها بأنفسنا، بحيث يمكن تتبع كل شحنة حتى مزارعيها.",
+                step1_title: "توريد مباشر",
+                step1_text: "نتعاون مباشرة مع المزارعين في قرى التوريد دون وسطاء.",
+                step2_title: "المعالجة ومراقبة الجودة",
+                step2_text: "الفرز والتجفيف واختبار الجودة في منشآتنا في ماكاسار وبوجور.",
+                step3_title: "تعبئة للتصدير",
+                step3_text: "تعبئة وفق معايير التصدير ومواصفات المشتري.",
+                step4_title: "شحن FOB / CIF",
+                step4_text: "وثائق كاملة وتسليم إلى ميناء الوصول.",
+                impact_watch: "شاهد على يوتيوب"
+            }
+        };
+        Object.keys(extra).forEach(l => Object.assign(translations[l], extra[l]));
 
-            // Sync selectors
+        function setLanguage(lang) {
+            if (!translations[lang]) lang = 'id';
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const value = translations[lang][key];
+                if (value) el.innerHTML = value;
+            });
+            splitHeroTitle();
+
+            document.documentElement.lang = lang;
             document.getElementById('languageSwitcher').value = lang;
             document.getElementById('mobileLanguageSwitcher').value = lang;
-
-            // Save preference to localStorage
-            localStorage.setItem('sajiva_lang', lang);
+            try { localStorage.setItem('sajiva_lang', lang); } catch (e) { }
         }
 
-        // Event Listeners for Selectors
-        document.getElementById('languageSwitcher').addEventListener('change', (e) => {
-            setLanguage(e.target.value);
-        });
+        document.getElementById('languageSwitcher').addEventListener('change', e => setLanguage(e.target.value));
+        document.getElementById('mobileLanguageSwitcher').addEventListener('change', e => setLanguage(e.target.value));
 
-        document.getElementById('mobileLanguageSwitcher').addEventListener('change', (e) => {
-            setLanguage(e.target.value);
-        });
-
-        // Initialize Language (Check localStorage or default to 'id')
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('sajiva_lang') || 'id';
-            setLanguage(savedLang);
-        });
-
+        let savedLang = 'id';
+        try { savedLang = localStorage.getItem('sajiva_lang') || 'id'; } catch (e) { }
+        setLanguage(savedLang);
     </script>
 </body>
 
